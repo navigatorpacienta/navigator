@@ -713,15 +713,32 @@
         </div>
         
         <div class="card expandable" onclick="toggleCard(this)">
-            <div class="card-header">
-                <div class="card-icon">💬</div>
-                <div class="card-title">Обратная связь</div>
-            </div>
-            <div class="link-list">
-                <a href="#" class="link-item">раздел в разработке</a>
-            </div>
+    <div class="card-header">
+        <div class="card-icon">💬</div>
+        <div class="card-title">Обратная связь</div>
+    </div>
+    <div class="link-list">
+        <!-- Первый выпадающий список - Анонимные замечания -->
+        <div class="link-item dropdown-toggle" onclick="toggleDropdown('feedback1', event)">
+            Оставьте анонимно ваши замечания или предложения
+        </div>
+        <div class="dropdown-content" id="dropdown-feedback1">
+            <a href="https://forms.gle/bPcvrbcpFhjjPZai6" class="dropdown-item" target="_blank">
+                Перейти к форме
+            </a>
+        </div>
+        
+        <!-- Второй выпадающий список - Анкета удовлетворенности -->
+        <div class="link-item dropdown-toggle" onclick="toggleDropdown('feedback2', event)">
+            Анкета по удовлетворенности посетителя
+        </div>
+        <div class="dropdown-content" id="dropdown-feedback2">
+            <a href="https://forms.gle/cviJBeGh2gwP1Gxy5" class="dropdown-item" target="_blank">
+                Заполнить анкету
+            </a>
         </div>
     </div>
+</div>
     
     <footer class="footer">
         <p>2026</p>
