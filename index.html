@@ -73,10 +73,8 @@
             overflow: hidden;
         }
         
-        /* ВОЗВРАЩАЕМ ПРОПАВШИЙ БЛОК */
         .header img.romashka {
             position: absolute;
-            /* ИСПРАВЛЕНО: Меняем z-index с -1 на 0, чтобы ромашки были видны */
             z-index: 0;
             opacity: 0.5;
             user-select: none;
@@ -167,6 +165,16 @@
             gap: 25px;
             margin: 40px 0;
         }
+        
+        /* Стиль для карточки, которая должна быть центрирована */
+        .card.centered {
+            grid-column: 1 / -1;
+            justify-self: center;
+            width: min(100%, 320px);
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
         .card {
             background: var(--background);
             border-radius: 14px;
@@ -636,66 +644,42 @@
             const grid = document.getElementById('cardGrid');
             const cards = Array.from(grid.children);
             
-            // Сброс предыдущих стилей
+            // Сначала убираем класс centered у всех карточек
             cards.forEach(card => {
-                card.style.marginLeft = '';
-                card.style.marginRight = '';
+                card.classList.remove('centered');
             });
 
-            // Получаем ширину контейнера и одной карточки
+            // Получаем ширину контейнера
             const gridWidth = grid.offsetWidth;
             
-            // Создаем временный элемент для вычисления реальной ширины карточки
-            const tempCard = document.createElement('div');
-            tempCard.className = 'card';
-            tempCard.style.visibility = 'hidden';
-            tempCard.style.position = 'absolute';
-            tempCard.style.width = ''; // Сбросить, чтобы применились стили
-            grid.appendChild(tempCard);
-            
-            const cardStyle = window.getComputedStyle(tempCard);
-            const cardWidth = tempCard.offsetWidth;
-            const cardMarginLeft = parseFloat(cardStyle.marginLeft) || 0;
-            const cardMarginRight = parseFloat(cardStyle.marginRight) || 0;
-            const cardTotalWidth = cardWidth + cardMarginLeft + cardMarginRight;
-            
-            grid.removeChild(tempCard);
-            
-            // Получаем значение gap
-            const gridStyle = window.getComputedStyle(grid);
-            const gap = parseFloat(gridStyle.gap) || 25;
+            // Получаем минимальную ширину карточки из CSS
+            const cardMinWidth = 320; // из grid-template-columns: minmax(320px, 1fr)
+            const gap = 25; // из gap: 25px
             
             // Вычисляем, сколько карточек помещается в ряд
-            // Формула: ширина грида = n * ширина_карточки + (n-1) * gap
-            // Решаем относительно n: n = (ширина_грида + gap) / (ширина_карточки + gap)
-            let cardsPerRow = Math.floor((gridWidth + gap) / (cardTotalWidth + gap));
+            // Формула: cardsPerRow = floor((gridWidth + gap) / (cardMinWidth + gap))
+            let cardsPerRow = Math.floor((gridWidth + gap) / (cardMinWidth + gap));
             cardsPerRow = Math.max(1, cardsPerRow); // Минимум 1 карточка в ряду
-
+            
             // Проверяем последний ряд
             const totalCards = cards.length;
-            const cardsInLastRow = totalCards % cardsPerRow;
-
+            const remainder = totalCards % cardsPerRow;
+            
             // Если в последнем ряду 1 карточка
-            if (cardsInLastRow === 1) {
+            if (remainder === 1) {
                 const lastCard = cards[totalCards - 1];
-                
-                // Вычисляем отступы для центрирования
-                // Ширина пустого пространства в последнем ряду: (cardsPerRow - 1) * (cardTotalWidth + gap)
-                const emptySpace = (cardsPerRow - 1) * (cardTotalWidth + gap);
-                
-                // Левый отступ для центрирования одной карточки
-                const leftMargin = emptySpace / 2;
-                
-                lastCard.style.marginLeft = leftMargin + 'px';
-                lastCard.style.marginRight = 'auto'; // auto для правого отступа
+                lastCard.classList.add('centered');
             }
         }
 
         // Запускаем функцию после загрузки страницы и при изменении размера окна
         window.addEventListener('load', function() {
-            setTimeout(centerLastCardIfAlone, 100); // Небольшая задержка для гарантии рендера
+            setTimeout(centerLastCardIfAlone, 50);
         });
         window.addEventListener('resize', centerLastCardIfAlone);
+        
+        // Также запускаем после загрузки всех ресурсов
+        window.addEventListener('pageshow', centerLastCardIfAlone);
     </script>
 </body>
 </html>
