@@ -7,31 +7,30 @@
     <title>Навигатор пациента | ГБУЗ МО МОКПТД филиал Клинский</title>
   
     <style>
-        /* ШРИФТЫ КИРИЛЛИЧЕСКИЕ */
         @font-face {
             font-family: 'Inter';
-            src: url('fonts/inter-cyrillic-400-normal.woff2') format('woff2');
+            src: url('./fonts/inter-cyrillic-400-normal.woff2') format('woff2');
             font-weight: 400;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Inter';
-            src: url('fonts/inter-cyrillic-500-normal.woff2') format('woff2');
+            src: url('./fonts/inter-cyrillic-500-normal.woff2') format('woff2');
             font-weight: 500;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Inter';
-            src: url('fonts/inter-cyrillic-600-normal.woff2') format('woff2');
+            src: url('./fonts/inter-cyrillic-600-normal.woff2') format('woff2');
             font-weight: 600;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Inter';
-            src: url('fonts/inter-cyrillic-700-normal.woff2') format('woff2');
+            src: url('./fonts/inter-cyrillic-700-normal.woff2') format('woff2');
             font-weight: 700;
             font-style: normal;
             font-display: swap;
@@ -47,9 +46,6 @@
             --background: #FFFFFF;
             --surface: #F9F9F9;
             --border: #E0E0E0;
-            --error: #D32F2F;
-            --telegram-blue: #2AABEE;
-            --phone-red: #D32F2F;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
             --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
             --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
@@ -65,7 +61,6 @@
             margin: 0 auto;
         }
 
-        /* === HEADER === */
         .header {
             position: relative;
             text-align: center;
@@ -76,7 +71,6 @@
             margin-bottom: 35px;
             box-shadow: var(--shadow-lg);
             overflow: hidden;
-            z-index: 1;
         }
         .header img.romashka {
             position: absolute;
@@ -84,15 +78,12 @@
             opacity: 0.5;
             user-select: none;
             pointer-events: none;
-            width: auto;
-            height: auto;
         }
         .institution-name {
             font-size: 1.2rem;
             margin-bottom: 12px;
             font-weight: 500;
             opacity: 0.95;
-            letter-spacing: 0.3px;
         }
         .header h1 {
             font-size: 3rem;
@@ -105,10 +96,8 @@
             opacity: 0.9;
             max-width: 700px;
             margin: 0 auto;
-            font-weight: 400;
         }
         
-        /* === CONTACT BLOCK === */
         .contact-block {
             background: white;
             padding: 30px;
@@ -163,14 +152,9 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 16px rgba(0,0,0,0.15);
         }
-        .contact-btn.phone {
-            background: linear-gradient(135deg, var(--phone-red) 0%, #B71C1C 100%);
-        }
-        .contact-btn.telegram {
-            background: linear-gradient(135deg, var(--telegram-blue) 0%, #1E88E5 100%);
-        }
+        .contact-btn.phone { background: linear-gradient(135deg, #D32F2F 0%, #B71C1C 100%); }
+        .contact-btn.telegram { background: linear-gradient(135deg, #2AABEE 0%, #1E88E5 100%); }
         
-        /* === GRID & CARDS === */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -219,9 +203,8 @@
             transition: transform 0.25s ease;
             margin-left: 10px;
         }
-        .card.expandable.expanded .card-header::after {
-            transform: rotate(180deg);
-        }
+        .card.expandable.expanded .card-header::after { transform: rotate(180deg); }
+        
         .link-list {
             list-style: none;
             max-height: 0;
@@ -229,9 +212,8 @@
             transition: max-height 0.3s ease;
             margin-top: 10px;
         }
-        .card.expanded .link-list {
-            max-height: 1000px;
-        }
+        .card.expanded .link-list { max-height: 1000px; }
+        
         .link-item {
             display: block;
             padding: 14px 16px;
@@ -251,13 +233,10 @@
             color: var(--primary);
         }
         
-        /* выпадающие меню */
         .dropdown-toggle {
             cursor: pointer;
             position: relative;
             padding-right: 40px;
-            font-size: 1.1rem;
-            font-weight: 500;
         }
         .dropdown-toggle::after {
             content: '▼';
@@ -269,9 +248,7 @@
             color: var(--text-light);
             transition: transform 0.25s ease;
         }
-        .dropdown-toggle.expanded::after {
-            transform: translateY(-50%) rotate(180deg);
-        }
+        .dropdown-toggle.expanded::after { transform: translateY(-50%) rotate(180deg); }
         .dropdown-content {
             display: none;
             background: white;
@@ -281,10 +258,7 @@
             border: 1px solid var(--border);
             overflow: hidden;
         }
-        .dropdown-content.show {
-            display: block;
-            animation: fadeIn 0.2s ease;
-        }
+        .dropdown-content.show { display: block; animation: fadeIn 0.2s ease; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-6px); }
             to { opacity: 1; transform: translateY(0); }
@@ -306,65 +280,52 @@
         }
         .dropdown-item-icon { margin-right: 10px; font-size: 0.9rem; }
         
-        /* === МОДАЛЬНЫЕ ОКНА === */
+        /* МОДАЛЬНЫЕ ОКНА */
         .modal-preview {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6);
+            background-color: rgba(0,0,0,0.5);
             z-index: 2000;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(3px);
         }
-        .modal-preview.active {
-            display: flex;
-        }
+        .modal-preview.active { display: flex; }
         .modal-preview__content {
-            background: #ffffff;
+            background: white;
             width: 92%;
-            max-width: 560px;
+            max-width: 520px;
             max-height: 80vh;
-            border-radius: 32px;
+            border-radius: 28px;
             box-shadow: var(--shadow-lg);
             padding: 28px 24px;
             position: relative;
-            animation: modalFadeIn 0.25s;
+            animation: modalFadeIn 0.2s;
             overflow-y: auto;
         }
         @keyframes modalFadeIn {
-            from { opacity: 0.7; transform: scale(0.96); }
+            from { opacity: 0.8; transform: scale(0.97); }
             to { opacity: 1; transform: scale(1); }
         }
         .modal-preview__close {
             position: absolute;
-            top: 16px; right: 20px;
+            top: 16px; right: 18px;
             font-size: 32px;
             line-height: 1;
             cursor: pointer;
             color: #aaa;
-            transition: color 0.15s;
             background: none;
             border: none;
-            width: 44px;
-            height: 44px;
+            width: 44px; height: 44px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
             z-index: 10;
         }
         .modal-preview__close:hover { color: #333; background: #f0f0f0; }
-        .modal-preview__title {
-            font-size: 1.9rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 0 0 20px 0;
-            padding-right: 40px;
-            line-height: 1.3;
-        }
         
-        /* список подразделов (первый уровень) */
         .section-list {
             display: flex;
             flex-direction: column;
@@ -372,46 +333,38 @@
         }
         .section-item {
             background: #f8fafc;
-            border-radius: 20px;
+            border-radius: 18px;
             padding: 18px 20px;
             border: 1px solid #e9edf2;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.15s;
             font-size: 1.2rem;
             font-weight: 500;
             color: var(--primary);
-            box-shadow: var(--shadow-sm);
         }
         .section-item:hover {
             background: #e8f0fe;
-            transform: translateY(-2px);
         }
         
-        /* превью конкретной темы (второй уровень) */
         .preview-card {
             background: #ffffff;
-            border-radius: 24px;
-            padding: 24px 22px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
         .preview-card__subtitle {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 600;
             color: #1e293b;
-            margin-bottom: 16px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary-soft);
+            margin-bottom: 20px;
+            line-height: 1.3;
         }
         .preview-card__text {
             font-size: 1.1rem;
             color: #2d3a4f;
             line-height: 1.7;
-            margin-bottom: 28px;
-            background: #fafcff;
+            margin-bottom: 32px;
+            background: #f8fafc;
             padding: 20px 22px;
-            border-radius: 22px;
-            border-left: 5px solid var(--primary-light);
+            border-radius: 20px;
+            border-left: 4px solid var(--primary-light);
         }
         .preview-card__button {
             display: inline-block;
@@ -423,15 +376,11 @@
             text-decoration: none;
             font-size: 1.1rem;
             border: 2px solid var(--primary);
-            cursor: pointer;
-            transition: background 0.2s;
-            width: auto;
+            transition: background 0.15s;
             min-width: 160px;
             text-align: center;
         }
-        .preview-card__button:hover {
-            background: rgba(46, 125, 50, 0.06);
-        }
+        .preview-card__button:hover { background: rgba(46, 125, 50, 0.06); }
         .back-button {
             display: inline-flex;
             align-items: center;
@@ -439,16 +388,13 @@
             background: none;
             border: none;
             color: var(--primary);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
-            padding: 10px 0 20px 0;
+            padding: 0 0 24px 0;
             cursor: pointer;
         }
-        .back-button:hover {
-            color: #1e5a23;
-        }
+        .back-button:hover { color: #1e5a23; }
         
-        /* === FOOTER === */
         .footer {
             text-align: center;
             padding: 30px;
@@ -461,13 +407,12 @@
         @media (max-width: 480px) {
             .modal-preview__content { padding: 24px 18px; }
             .section-item { padding: 16px 18px; font-size: 1.1rem; }
-            .preview-card { padding: 20px 16px; }
-            .preview-card__subtitle { font-size: 1.35rem; }
+            .preview-card__subtitle { font-size: 1.4rem; }
         }
     </style>
 </head>
 <body>
-    <header class="header"><!-- ... ромашки ... -->
+    <header class="header">
         <img src="romashka.png" alt="Ромашка" class="romashka" style="top:10%; left:5%; width:60px; transform:rotate(-5deg);">
         <img src="romashka.png" alt="Ромашка" class="romashka" style="top:15%; right:2%; width:45px; transform:rotate(10deg);">
         <img src="romashka.png" alt="Ромашка" class="romashka" style="bottom:20%; left:2%; width:90px; transform:rotate(-15deg); opacity:0.3;">
@@ -478,7 +423,7 @@
         <p>Помогает понять диагностику и лечение, следить за их этапами и выполнять всё правильно.</p>
     </header>
 
-    <div class="contact-block"><!-- ... контакты ... -->
+    <div class="contact-block">
         <div class="contact-text">По вопросам доступности или качества оказания медицинской помощи обращайтесь сразу напрямую ко мне.<br>Это решит вопрос здесь и сейчас и поможет нам стать лучше.</div>
         <div class="contact-name">Лукаш Игорь Александрович</div>
         <div class="contact-position">Заведующий филиалом</div>
@@ -489,62 +434,79 @@
     </div>
 
     <div class="grid">
-        <!-- Карточка: О нашем учреждении (модальное окно со списком) -->
+        <!-- О нашем учреждении -->
         <div class="card expandable" data-preview="about">
             <div class="card-header"><div class="card-icon">🏥</div><div class="card-title">О нашем учреждении</div></div>
-            <div class="link-list" style="display: none;"></div>
         </div>
-        <!-- Карточка: Как мы улучшаем качество (открывает список, но там один пункт) -->
+        <!-- Как мы улучшаем качество -->
         <div class="card card-link" data-preview="quality" style="cursor:pointer;">
             <div class="card-header"><div class="card-icon">🤝</div><div class="card-title">Как мы улучшаем качество нашей работы вместе с вами</div></div>
         </div>
-        <!-- Карточка: Консервативное лечение (список подразделов) -->
+        <!-- Консервативное лечение -->
         <div class="card expandable" data-preview="treatment">
             <div class="card-header"><div class="card-icon">💊</div><div class="card-title">Консервативное лечение</div></div>
-            <div class="link-list" style="display: none;"></div>
         </div>
-        <!-- Карточка: Хирургическое лечение (один пункт) -->
+        <!-- Хирургическое лечение -->
         <div class="card card-link" data-preview="surgery" style="cursor:pointer;">
             <div class="card-header"><div class="card-icon">⚕️</div><div class="card-title">Хирургическое лечение</div></div>
         </div>
-        <!-- Карточка: Профилактика и раннее выявление (два пункта) -->
+        <!-- Профилактика -->
         <div class="card expandable" data-preview="prevention">
             <div class="card-header"><div class="card-icon">🛡️</div><div class="card-title">Профилактика и раннее выявление туберкулёза</div></div>
-            <div class="link-list" style="display: none;"></div>
         </div>
-        <!-- Частые вопросы (без модалки) -->
+        <!-- Частые вопросы -->
         <a href="faq.html" class="card card-link"><div class="card-header"><div class="card-icon">❓</div><div class="card-title">Частые вопросы</div></div></a>
-        <!-- Нормативная база (без модалки) -->
-        <div class="card expandable" onclick="toggleCard(this)"><!-- ... содержимое ... -->
+        <!-- Нормативная база -->
+        <div class="card expandable" onclick="toggleCard(this)">
             <div class="card-header"><div class="card-icon">⚖️</div><div class="card-title">Нормативная база</div></div>
-            <div class="link-list"><!-- ... пункты ... --></div>
+            <div class="link-list">
+                <div class="link-item dropdown-toggle" onclick="toggleDropdown('doc1', event)">Московская областная программа госгарантий</div>
+                <div class="dropdown-content" id="dropdown-doc1">
+                    <a href="https://mosreg.ru/download/document/1315416" class="dropdown-item" target="_blank"><span class="dropdown-item-icon">📄</span> Ссылка на официальный документ</a>
+                    <a href="fz323.html" class="dropdown-item"><span class="dropdown-item-icon">💡</span> Разъяснения простыми словами</a>
+                </div>
+                <div class="link-item dropdown-toggle" onclick="toggleDropdown('doc2', event)">Программа госгарантий РФ</div>
+                <div class="dropdown-content" id="dropdown-doc2">
+                    <a href="http://actual.pravo.gov.ru/content/content.html#pnum=0001202512300036" class="dropdown-item" target="_blank"><span class="dropdown-item-icon">📄</span> Ссылка на официальный документ</a>
+                    <a href="fz323.html" class="dropdown-item"><span class="dropdown-item-icon">💡</span> Разъяснения простыми словами</a>
+                </div>
+                <div class="link-item dropdown-toggle" onclick="toggleDropdown('doc3', event)">ФЗ-323 "Об основах охраны здоровья"</div>
+                <div class="dropdown-content" id="dropdown-doc3">
+                    <a href="fz323zakon.html" class="dropdown-item"><span class="dropdown-item-icon">📄</span> Основной документ</a>
+                    <a href="fz323.html" class="dropdown-item"><span class="dropdown-item-icon">💡</span> Разъяснения простыми словами</a>
+                </div>
+            </div>
         </div>
-        <!-- Обратная связь (без модалки) -->
-        <div class="card expandable" onclick="toggleCard(this)"><!-- ... содержимое ... -->
-            <div class="card-header"><div class="card-icon">💬</div><div class="card-title">Обратная связь</div></div>
-            <div class="link-list"><!-- ... ссылки ... --></div>
+        <!-- Обратная связь (ВОССТАНОВЛЕНО) -->
+        <div class="card expandable" onclick="toggleCard(this)">
+            <div class="card-header">
+                <div class="card-icon">💬</div>
+                <div class="card-title">Обратная связь</div>
+            </div>
+            <div class="link-list">
+                <a href="https://forms.gle/bPcvrbcpFhjjPZai6" class="link-item" target="_blank">
+                    Оставьте анонимно ваши замечания или предложения
+                </a>
+                <a href="https://forms.gle/cviJBeGh2gwP1Gxy5" class="link-item" target="_blank">
+                    Анкета по удовлетворенности посетителя
+                </a>
+            </div>
         </div>
     </div>
 
     <footer class="footer"><p>2026</p><p>г.о. Клин</p></footer>
 
-    <!-- МОДАЛЬНОЕ ОКНО (универсальное) -->
+    <!-- МОДАЛЬНОЕ ОКНО -->
     <div class="modal-preview" id="previewModal">
         <div class="modal-preview__content">
             <button class="modal-preview__close" id="closePreviewModal">&times;</button>
-            <div class="modal-preview__title" id="modalPreviewTitle"></div>
             <div id="modalPreviewBody"></div>
         </div>
     </div>
 
     <script>
-        // ========== СТАРЫЕ ФУНКЦИИ (НОРМАТИВКА) ==========
         function toggleCard(card) { if (card.classList.contains('expandable')) card.classList.toggle('expanded'); }
-        function toggleDropdown(id, event) {
-            event.stopPropagation();
-            document.getElementById('dropdown-'+id).classList.toggle('show');
-            event.currentTarget.classList.toggle('expanded');
-        }
+        function toggleDropdown(id, e) { e.stopPropagation(); document.getElementById('dropdown-'+id).classList.toggle('show'); e.currentTarget.classList.toggle('expanded'); }
         document.addEventListener('click', function(e) {
             if (!e.target.classList.contains('dropdown-toggle') && !e.target.closest('.dropdown-toggle')) {
                 document.querySelectorAll('.dropdown-content.show').forEach(i=>i.classList.remove('show'));
@@ -552,55 +514,51 @@
             }
         });
 
-        // ========== ДВУХУРОВНЕВАЯ СТРУКТУРА ==========
         const modal = document.getElementById('previewModal');
-        const modalTitle = document.getElementById('modalPreviewTitle');
         const modalBody = document.getElementById('modalPreviewBody');
         const closeBtn = document.getElementById('closePreviewModal');
 
-        // Данные для разделов (первый уровень — список)
         const sectionsData = {
             about: {
-                title: 'О нашем учреждении',
                 items: [
                     { name: 'Миссия и ценности', link: 'missia.html', preview: 'Здесь вы узнаете, к чему мы стремимся, наши главные цели и принципы работы.' },
                     { name: 'История Клинского противотуберкулезного диспансера', link: 'https://navigatorpacienta.github.io/istoricheskaya/', preview: 'История о том, как жители Клинского района за свой счет строили первый диспансер, и о врачах-энтузиастах, посвятивших свою жизнь борьбе с туберкулезом.' }
                 ]
             },
             quality: {
-                title: 'Как мы улучшаем качество нашей работы вместе с вами',
                 items: [
-                    { name: 'Как мы улучшаем качество', link: 'kachestvo_vmeste.html', preview: 'Мы не сможем становиться лучше без обратной связи от вас. Нам очень важно ваше мнение!' }
+                    { name: 'Как мы улучшаем качество', link: 'kachestvo_vmeste.html', preview: 'Главная мысль: мы не сможем становиться лучше без вашей обратной связи. Нам очень важно ваше мнение!' }
                 ]
             },
             treatment: {
-                title: 'Консервативное лечение',
                 items: [
-                    { name: 'Как правильно принимать лекарства', link: 'Pacientam_o_preparatax.html', preview: 'Прочитав этот раздел, вы сформируете понимание и будете осознанно подходить к приему, сможете контролировать процесс и отслеживать возможные побочные эффекты. Вы поймете, почему и когда проводятся необходимые обследования.' },
+                    { name: 'Как правильно принимать лекарства', link: 'Pacientam_o_preparatax.html', preview: 'Прочитав этот текст, вы станете осознанно подходить к приему лекарств, сможете контролировать процесс и отслеживать возможные побочные эффекты. Вы поймете, почему и когда проводятся необходимые обследования.' },
                     { name: 'Почему важно правильно собрать мокроту', link: 'sbor_mokroti.html', preview: 'Только благодаря правильно собранной мокроте мы сможем точно найти микобактерию туберкулеза и понять, какие лекарства смогут ее уничтожить именно в вашем случае.' },
-                    { name: 'Почему нельзя пропускать прием лекарств', link: 'nelzya_propuskat.html', preview: 'Вы поймете, почему перерывы в лечении приводят к привыканию микробов к таблеткам, и тогда лечение перестает быть эффективным.' }
+                    { name: 'Почему нельзя пропускать прием лекарств', link: 'nelzya_propuskat.html', preview: 'Прочитав этот текст, вы поймете, почему перерывы в лечении приводят к привыканию микробов к таблеткам, и тогда лечение перестает быть эффективным.' }
                 ]
             },
             surgery: {
-                title: 'Хирургическое лечение',
                 items: [
-                    { name: 'Хирургическое лечение', link: 'https://navigatorpacienta.github.io/o_hirurgicheskom_lechenii/', preview: 'Хирургическое лечение туберкулеза — это современный, безопасный и эффективный метод, который помогает добиться стойкого и благоприятного результата.' }
+                    { name: 'Хирургическое лечение', link: 'https://navigatorpacienta.github.io/o_hirurgicheskom_lechenii/', preview: 'Из этого раздела вы узнаете, что хирургическое лечение туберкулеза — это современный, безопасный и эффективный метод, который помогает добиться стойкого и благоприятного результата.' }
                 ]
             },
             prevention: {
-                title: 'Профилактика и раннее выявление туберкулёза',
                 items: [
-                    { name: 'Раннее выявление в производственном очаге туберкулёза', link: 'https://navigatorpacienta.github.io/informirovanie_v_ochagah_tuberculeza/', preview: 'Вы поймете, почему необходимо проводить обследование контактных лиц. Это единственный способ своевременно предупредить развитие болезни или найти ее на самой ранней стадии.' },
-                    { name: 'О профосмотрах на туберкулез', link: 'https://navigatorpacienta.github.io/o_profosmotrax_na_tuberkulez/', preview: 'Вы узнаете как организована работа с населением по раннему выявлению туберкулеза.' }
+                    { name: 'Организация работы в производственном очаге туберкулеза', link: 'https://navigatorpacienta.github.io/informirovanie_v_ochagah_tuberculeza/', preview: 'Вы поймете, почему необходимо проводить обследование контактных лиц. Это единственный способ своевременно предупредить развитие болезни или найти ее на самой ранней стадии.' },
+                    { name: 'О профосмотрах на туберкулез', link: 'https://navigatorpacienta.github.io/o_profosmotrax_na_tuberkulez/', preview: 'Этот текст сформирует понимание того, как организована работа системы здравоохранения по раннему выявлению туберкулеза.' }
                 ]
             }
         };
 
-        // Открыть первый уровень (список разделов)
         function openSectionList(key) {
             const data = sectionsData[key];
             if (!data) return;
-            modalTitle.innerText = data.title;
+            
+            if (data.items.length === 1) {
+                showItemPreview(key, 0);
+                return;
+            }
+            
             let html = '<div class="section-list">';
             data.items.forEach((item, index) => {
                 html += `<div class="section-item" data-section="${key}" data-itemindex="${index}">${item.name}</div>`;
@@ -609,7 +567,6 @@
             modalBody.innerHTML = html;
             modal.classList.add('active');
 
-            // назначаем обработчики на пункты списка
             document.querySelectorAll('.section-item').forEach(el => {
                 el.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -620,14 +577,16 @@
             });
         }
 
-        // Открыть второй уровень (превью конкретной темы)
         function showItemPreview(sectionKey, itemIndex) {
             const section = sectionsData[sectionKey];
             const item = section.items[itemIndex];
-            // меняем содержимое модалки на превью
-            modalTitle.innerText = section.title; // можно оставить общий заголовок или сделать item.name
-            let html = `
-                <button class="back-button" id="backToMenu">← Назад к списку</button>
+            
+            let html = '';
+            if (section.items.length > 1) {
+                html += `<button class="back-button" id="backToMenu">← Назад к списку</button>`;
+            }
+            
+            html += `
                 <div class="preview-card">
                     <div class="preview-card__subtitle">${item.name}</div>
                     <div class="preview-card__text">${item.preview}</div>
@@ -635,18 +594,19 @@
                 </div>
             `;
             modalBody.innerHTML = html;
-            // кнопка "назад"
-            document.getElementById('backToMenu').addEventListener('click', () => {
-                openSectionList(sectionKey);
-            });
+            modal.classList.add('active');
+            
+            if (section.items.length > 1) {
+                document.getElementById('backToMenu').addEventListener('click', () => {
+                    openSectionList(sectionKey);
+                });
+            }
         }
 
-        // Закрытие
         function closeModal() { modal.classList.remove('active'); }
         closeBtn.addEventListener('click', closeModal);
         modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
-        // Назначаем обработчики на главные карточки
         document.querySelectorAll('[data-preview]').forEach(card => {
             card.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -654,7 +614,6 @@
                 openSectionList(key);
             });
         });
-        // убираем onclick у карточек с data-preview
         document.querySelectorAll('.card[data-preview]').forEach(c => c.removeAttribute('onclick'));
     </script>
 </body>
