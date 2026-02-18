@@ -76,7 +76,8 @@
         /* ВОЗВРАЩАЕМ ПРОПАВШИЙ БЛОК */
         .header img.romashka {
             position: absolute;
-            z-index: -1;
+            /* ИСПРАВЛЕНО: Меняем z-index с -1 на 0, чтобы ромашки были видны */
+            z-index: 0;
             opacity: 0.5;
             user-select: none;
             pointer-events: none;
