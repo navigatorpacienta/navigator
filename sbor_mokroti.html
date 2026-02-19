@@ -274,6 +274,14 @@
             box-shadow: 0 3px 6px rgba(52, 152, 219, 0.3);
         }
         
+        .warning-box {
+            background: #fff3e0;
+            border-left: 5px solid #e67e22;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
         .question-box {
             background: linear-gradient(to right, #fff8e1, #fffde7);
             border-left: 5px solid #ffb300;
@@ -300,13 +308,32 @@
         .conclusion {
             background: linear-gradient(to right, #e8f5e9, #f1f8e9);
             border-left: 5px solid #4caf50;
-            padding: 25px;
+            padding: 30px;
             margin: 40px 0;
             border-radius: 0 10px 10px 0;
-            text-align: center;
-            font-size: 18px;
-            font-style: italic;
             box-shadow: 0 5px 15px rgba(76, 175, 80, 0.1);
+        }
+        
+        .conclusion h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 26px;
+            text-align: center;
+        }
+        
+        .conclusion p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .conclusion ul {
+            text-align: left;
+            display: inline-block;
+            margin: 0 auto;
+            font-size: 18px;
+            list-style-type: disc;
+            padding-left: 40px;
         }
         
         .footer {
@@ -385,6 +412,10 @@
             .figure-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .conclusion ul {
+                padding-left: 20px;
+            }
         }
     </style>
 </head>
@@ -451,7 +482,7 @@
             </ul>
             
             <div class="highlight-box">
-                <p>Если мокрота собрана недостаточно тщательно или в контейнер попали посторонние бактерии микобактерию могут не обнаружить с первого раза или не смогут провести все необходимые исследования.</p>
+                <p>Если мокрота собрана недостаточно тщательно или в контейнер попали посторонние бактерии, микобактерию могут не обнаружить с первого раза или не смогут провести все необходимые исследования.</p>
             </div>
         </div>
         
@@ -468,18 +499,40 @@
         </div>
         
         <div class="content-section">
-            <h2 class="section-title">Что даёт правильный сбор мокроты?</h2>
+            <h2 class="section-title">Правила сбора мокроты для анализа</h2>
             
+            <div class="warning-box">
+                <p><strong>Критически важно:</strong> Для анализа пригодна только мокрота, выделяемая из нижних дыхательных путей (бронхов) при глубоком кашле. Слюна или слизь из носоглотки не подходят и приведут к недостоверному результату. В образец не должны попасть частицы пищи или иные посторонние примеси.</p>
+            </div>
+            
+            <h3 class="subsection-title">Подготовка и время сбора</h3>
             <ul>
-                <li>повышается вероятность обнаружить микобактерию;</li>
-                <li>становится возможным определить её чувствительность;</li>
-                <li>подбирается наиболее подходящая схема лечения.</li>
+                <li><span class="highlight">Собирайте мокроту утром</span>, сразу после пробуждения.</li>
+                <li><span class="highlight">Не чистите зубы</span> перед сбором.</li>
+                <li>Перед сбором можно прополоскать рот чистой кипяченой водой или слабым (1-2%) раствором пищевой соды.</li>
             </ul>
+            
+            <h3 class="subsection-title">Пошаговая инструкция</h3>
+            <p>Для получения качественного образца выполните следующие действия:</p>
+            
+            <ol class="numbered-list">
+                <li><strong>Тщательно прополощите рот</strong> согласно указаниям выше.</li>
+                <li><strong>Сделайте несколько (5-10) постепенно углубляющихся вдохов и выдохов.</strong> Начинайте спокойно, с каждым циклом вдыхайте глубже, а выдыхайте с большим усилием.</li>
+                <li><strong>На последнем, самом глубоком вдохе задержите дыхание на 2-3 секунды, затем резко и с силой выдохните, чтобы спровоцировать отхождение мокроты.</strong></li>
+                <li><strong>Постарайтесь откашлять мокроту</strong>, почувствовав, что она идет из глубины грудной клетки, а не из горла.</li>
+                <li><strong>Сплюньте полученную мокроту в стерильный контейнер</strong>, стараясь не касаться его краев. Главное — собрать именно мокроту. Для анализа подходит даже небольшое ее количество.</li>
+                <li><strong>Плотно закройте контейнер крышкой</strong> и тщательно вымойте руки с мылом.</li>
+            </ol>
         </div>
         
         <div class="conclusion">
-            <p>Никто, кроме вас, не может откашляться за вас.</p>
-            <p style="margin-top: 15px; font-weight: bold;">Тщательный сбор мокроты и выполнение рекомендаций врача напрямую помогают выбрать правильное лечение.</p>
+            <h2>Главное, что нужно запомнить</h2>
+            <p>Тщательный сбор мокроты и выполнение рекомендаций врача помогает:</p>
+            <ul>
+                <li>повысить вероятность обнаружить микобактерию;</li>
+                <li>определить ее чувствительность к препаратам;</li>
+                <li>подобрать наиболее подходящую схему лечения.</li>
+            </ul>
         </div>
         
         <div class="footer">
@@ -495,15 +548,18 @@
             printStyles.innerHTML = `
                 @media print {
                     body {
+                        background-color: white;
+                        padding: 0;
                         font-size: 12pt !important;
                         line-height: 1.5 !important;
                     }
                     
                     .article-container {
-                        padding: 15px !important;
+                        box-shadow: none;
+                        padding: 20px !important;
                         margin: 0 !important;
-                        box-shadow: none !important;
                         border-radius: 0 !important;
+                        page-break-inside: avoid;
                     }
                     
                     .image-container, .figure-item {
@@ -517,7 +573,7 @@
                         height: auto !important;
                     }
                     
-                    .highlight-box, .info-box, .question-box, .conclusion {
+                    .highlight-box, .info-box, .question-box, .conclusion, .warning-box {
                         page-break-inside: avoid !important;
                     }
                     
