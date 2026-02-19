@@ -5,217 +5,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Миссия, Видение, Цели - Медицинский филиал</title>
     <style>
-        /* =========================
-           ЛОКАЛЬНЫЕ ШРИФТЫ (как в index, но подключение мягкое)
-        ========================= */
-        @font-face {
-            font-family: 'Inter';
-            src: url('fonts/inter-cyrillic-400-normal.woff2') format('woff2');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-        
-        @font-face {
-            font-family: 'Inter';
-            src: url('fonts/inter-cyrillic-500-normal.woff2') format('woff2');
-            font-weight: 500;
-            font-style: normal;
-            font-display: swap;
-        }
-        
-        @font-face {
-            font-family: 'Inter';
-            src: url('fonts/inter-cyrillic-600-normal.woff2') format('woff2');
-            font-weight: 600;
-            font-style: normal;
-            font-display: swap;
-        }
-        
-        @font-face {
-            font-family: 'Inter';
-            src: url('fonts/inter-cyrillic-700-normal.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* Базовая гарнитура - Inter, с запасными вариантами */
-            font-family: 'Inter', 'Georgia', 'Times New Roman', serif;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
-
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            background-color: #f8f8f8;
             color: #333;
             line-height: 1.6;
-            padding: 20px;
-            max-width: 1100px;
-            margin: 0 auto;
+            padding: 0;
+            max-width: 100%;
+            margin: 0;
             border: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f8f8"/><path d="M20,20 L80,80 M80,20 L20,80" stroke="%23e0e0e0" stroke-width="1"/></svg>');
         }
-
         .container {
             background-color: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border-radius: 12px;
-            overflow: hidden;
-            padding: 50px 60px;
-            position: relative;
+            padding: 20px 15px;
+            box-shadow: none;
+            border-radius: 0;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
         }
-
-        /* Верхний акцент как в индексе */
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(to right, #2a6e3b, #4a9c5d);
-        }
-
         header {
             text-align: center;
-            margin-bottom: 45px;
-            padding-bottom: 25px;
-            border-bottom: 2px solid #eaeaea;
-            position: relative;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2a6e3b;
         }
-
-        /* Декоративная полоска под шапкой (как в индексе) */
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 25%;
-            width: 50%;
-            height: 3px;
-            background: linear-gradient(to right, transparent, #2a6e3b, transparent);
-        }
-
         h1 {
-            color: #2a6e3b;              /* Фирменный зеленый */
-            font-size: 2.2em;              /* Увеличен, но не огромный */
-            margin-bottom: 10px;
+            color: #2a6e3b;
+            font-size: 1.8em;
+            margin-bottom: 8px;
             letter-spacing: 0.5px;
             line-height: 1.4;
-            font-weight: 600;              /* Полужирный, но не жирный */
         }
-
         .subtitle {
             color: #555;
-            font-size: 1.2em;
+            font-size: 1em;
             font-style: italic;
-            font-weight: 400;
         }
-
-        /* Общие стили для секций */
         .section {
-            margin-bottom: 40px;
-            padding: 30px 30px;
-            background-color: #f9fdfa;      /* Светлая основа */
-            border-radius: 0 12px 12px 0;   /* Скругление справа (как у карточек в индексе) */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            border-left: 6px solid;         /* Толстая левая рамка — стиль Миссии, но толще */
+            margin-bottom: 25px;
+            padding: 20px 15px;
+            background-color: #f9fdfa;
+            border-left: 4px solid #4a9c5d;
+            border-radius: 0;
+            width: 100%;
         }
-
-        .section:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        h2 {
+            color: #2a6e3b;
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px dashed #b8d8c2;
         }
-
-        /* Индивидуальные цвета рамок (сохранены из оригинала) */
+        p, ul {
+            font-size: 1em;
+            color: #333;
+            line-height: 1.5;
+        }
+        ul {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+        li {
+            margin-bottom: 12px;
+            padding-left: 0;
+        }
         .mission {
             border-left-color: #3a7b4a;
             background-color: #f0f9f3;
         }
-
         .vision {
             border-left-color: #5ab972;
             background-color: #f2fbf4;
         }
-
         .goals {
             border-left-color: #1e4d2a;
             background-color: #e8f5eb;
         }
-
-        h2 {
-            color: #1e4d2a;                /* Темно-зеленый для контраста */
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed #b8d8c2;  /* Тонкая пунктирная линия (из миссии) */
-            font-weight: 500;               /* Средняя насыщенность */
-            letter-spacing: 0.3px;
-        }
-
-        p, ul {
-            font-size: 1.1em;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        ul {
-            padding-left: 30px;
-            margin-top: 10px;
-        }
-
-        li {
-            margin-bottom: 14px;
-            padding-left: 5px;
-        }
-
-        li strong {
-            color: #1e4d2a;                 /* Темно-зеленый для выделения */
-            font-weight: 600;
-        }
-
         .page-number {
             text-align: center;
-            margin-top: 50px;
-            padding-top: 25px;
-            border-top: 1px solid #ddd;
+            margin-top: 30px;
+            font-size: 0.85em;
             color: #777;
-            font-size: 0.95em;
+            border-top: 1px solid #ddd;
+            padding-top: 12px;
         }
 
-        /* Адаптация */
-        @media (max-width: 768px) {
+        /* Медиа-запросы для планшетов и десктопов */
+        @media (min-width: 768px) {
             body {
-                padding: 10px;
+                padding: 20px;
+                border-left: 8px solid #2a6e3b;
+                border-right: 8px solid #2a6e3b;
             }
             .container {
-                padding: 25px;
+                padding: 40px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+                border-radius: 2px;
+                max-width: 1000px;
+                margin: 0 auto;
             }
             h1 {
-                font-size: 1.8em;
+                font-size: 2.8em;
+                margin-bottom: 10px;
             }
             .subtitle {
-                font-size: 1.1em;
+                font-size: 1.2em;
             }
             .section {
-                padding: 20px 20px;
+                padding: 25px;
+                border-left-width: 5px;
             }
             h2 {
-                font-size: 1.5em;
+                font-size: 1.8em;
+            }
+            p, ul {
+                font-size: 1.1em;
+            }
+            .page-number {
+                margin-top: 40px;
+                font-size: 0.9em;
             }
         }
 
+        /* Для очень маленьких экранов */
         @media (max-width: 360px) {
             .container {
                 padding: 15px 10px;
             }
             h1 {
-                font-size: 1.5em;
+                font-size: 1.6em;
             }
             .section {
-                padding: 15px 12px;
+                padding: 15px 10px;
             }
             ul {
                 padding-left: 18px;
@@ -227,7 +155,7 @@
     <div class="container">
         <header>
             <h1>ГБУЗ МО "МОКПТД"<br>Филиал "Клинский"</h1>
-            <p class="subtitle">Миссия, Видение, Цели</p>
+            <p class="subtitle">Миссия. Видение. Стратегия.</p>
         </header>
 
         <section class="section mission">
@@ -252,7 +180,7 @@
             </ul>
         </section>
 
-        <div class="page-number">2025</div>
+        <div class="page-number">2025
     </div>
 </body>
 </html>
