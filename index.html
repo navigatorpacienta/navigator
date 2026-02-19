@@ -605,26 +605,18 @@
         }
 
         function showItemPreview(sectionKey, itemIndex) {
-            const section = sectionsData[sectionKey];
-            const item = section.items[itemIndex];
-            
-            // Всегда показываем кнопку "Назад"
-            let html = `<button class="back-button" id="backToMenu">← Назад к списку</button>`;
-            
-            html += `
-                <div class="preview-card">
-                    <div class="preview-card__text">${item.preview}</div>
-                    <a href="${item.link}" class="preview-card__button" target="_blank">Перейти →</a>
-                </div>
-            `;
-            modalBody.innerHTML = html;
-            modal.classList.add('active');
-            
-            document.getElementById('backToMenu').addEventListener('click', (e) => {
-                e.preventDefault();
-                openSectionList(sectionKey);
-            });
-        }
+    const section = sectionsData[sectionKey];
+    const item = section.items[itemIndex];
+    
+    let html = `
+        <div class="preview-card">
+            <div class="preview-card__text">${item.preview}</div>
+            <a href="${item.link}" class="preview-card__button" target="_blank">Перейти →</a>
+        </div>
+    `;
+    modalBody.innerHTML = html;
+    modal.classList.add('active');
+}
 
         function closeModal() { modal.classList.remove('active'); }
         closeBtn.addEventListener('click', closeModal);
