@@ -180,113 +180,96 @@
             }
         }
 
-                /* Адаптивные отступы и ширина */
-@media (max-width: 768px) {
-    body {
-        padding: 0;
-    }
-    
-    .container {
-        max-width: 100% !important;
-        margin: 4px !important;
-        padding: 16px 8px !important;
-        border-radius: 10px !important;
-        width: auto !important;
-    }
-    
-    .section {
-        padding: 16px 8px !important;
-        margin-left: -8px !important;
-        margin-right: -8px !important;
-        width: calc(100% + 16px) !important;
-        border-radius: 8px !important;
-        border-left-width: 5px !important;
-    }
-    
-    /* ДОБАВЛЯЕМ ЯВНЫЕ ОТСТУПЫ МЕЖДУ АБЗАЦАМИ */
-    .section p {
-        margin-bottom: 1.5em !important; /* Увеличиваем расстояние между абзацами */
-        font-size: 17px !important;
-        line-height: 1.7 !important;
-    }
-    
-    /* ПОСЛЕДНИЙ АБЗАЦ В БЛОКЕ НЕ ДОЛЖЕН ИМЕТЬ ОТСТУПА СНИЗУ */
-    .section p:last-of-type {
-        margin-bottom: 0 !important;
-    }
-    
-    /* СПЕЦИАЛЬНО ДЛЯ .definition-block (ЕСЛИ ИСПОЛЬЗУЕТСЯ) */
-    .definition-block {
-        margin-bottom: 1.5em !important;
-        font-size: 17px !important;
-        line-height: 1.7 !important;
-    }
-    
-    .definition-block:last-of-type {
-        margin-bottom: 0 !important;
-    }
-    
-    /* СТИЛИ ДЛЯ СПИСКОВ */
-    .section ul {
-        margin-top: 0.5em !important;
-        margin-bottom: 1.5em !important;
-        padding-left: 24px !important;
-        padding-right: 4px !important;
-    }
-    
-    .section li {
-        margin-bottom: 12px !important;
-        padding-left: 4px !important;
-        font-size: 17px !important;
-        line-height: 1.6 !important;
-    }
-    
-    /* Убираем лишний отступ у первого блока */
-    .section:first-of-type {
-        margin-top: 0 !important;
-    }
-    
-    h1 {
-        font-size: 28px !important;
-        line-height: 1.3 !important;
-        padding: 0 4px !important;
-        margin-bottom: 8px !important;
-    }
-    
-    .subtitle {
-        padding: 0 4px !important;
-        font-size: 16px !important;
-        line-height: 1.5 !important;
-        margin-bottom: 1.2em !important;
-    }
-    
-    h2 {
-        font-size: 24px !important;
-        line-height: 1.3 !important;
-        margin-bottom: 20px !important; /* Увеличили отступ после заголовка */
-        padding: 0 4px 8px 4px !important;
-    }
-    
-    p, .definition-block {
-        padding: 0 4px !important;
-        font-size: 17px !important;
-        line-height: 1.7 !important;
-    }
-    
-    .page-number {
-        padding: 20px 4px 0 !important;
-        margin-top: 24px !important;
-    }
-}
+        /* Адаптивные отступы и ширина для мобильных */
+        @media (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+            
+            .container {
+                max-width: 100% !important;
+                margin: 4px !important;
+                padding: 16px 8px !important;
+                border-radius: 10px !important;
+                width: auto !important;
+            }
+            
+            .section {
+                padding: 16px 8px !important;
+                margin-left: -8px !important;
+                margin-right: -8px !important;
+                width: calc(100% + 16px) !important;
+                border-radius: 8px !important;
+                border-left-width: 5px !important;
+            }
+            
+            /* УЛУЧШЕНИЕ ЧИТАЕМОСТИ: БОЛЬШИЕ ОТСТУПЫ МЕЖДУ АБЗАЦАМИ */
+            p, .definition-block {
+                padding: 0 4px !important;
+                font-size: 17px !important;
+                line-height: 1.7 !important;
+                margin-top: 0 !important;
+                margin-bottom: 1.5em !important; /* Увеличенный отступ после каждого абзаца */
+            }
+            
+            /* Убираем отступ у последнего элемента в секции */
+            .section p:last-of-type,
+            .section .definition-block:last-of-type,
+            .section ul:last-of-type {
+                margin-bottom: 0 !important;
+            }
+            
+            .section ul {
+                margin-bottom: 1.5em !important;
+                padding-left: 24px !important;
+                padding-right: 4px !important;
+            }
+            
+            .section li {
+                margin-bottom: 12px !important;
+                padding-left: 4px !important;
+                font-size: 17px !important;
+                line-height: 1.6 !important;
+            }
+            
+            .section:first-of-type {
+                margin-top: 0 !important;
+            }
+            
+            h1 {
+                font-size: 28px !important;
+                line-height: 1.3 !important;
+                padding: 0 4px !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .subtitle {
+                padding: 0 4px !important;
+                font-size: 16px !important;
+                line-height: 1.5 !important;
+                margin-bottom: 1.5em !important;
+            }
+            
+            h2 {
+                font-size: 24px !important;
+                line-height: 1.3 !important;
+                margin-bottom: 20px !important;
+                padding: 0 4px 8px 4px !important;
+            }
+            
+            .page-number {
+                padding: 20px 4px 0 !important;
+                margin-top: 24px !important;
+            }
+        }
         
         /* Для очень маленьких экранов */
         @media (max-width: 375px) {
             .container {
-                margin: 2px !important; /* Еще меньше отступ */
+                margin: 2px !important;
                 padding: 12px 4px !important;
             }
             
-            /* Зеленые блоки еще шире */
             .section {
                 padding: 12px 4px !important;
                 margin-left: -4px !important;
@@ -308,6 +291,11 @@
             
             ul {
                 padding-left: 16px !important;
+            }
+            
+            /* Сохраняем большие отступы и на очень маленьких экранах */
+            p, .definition-block {
+                margin-bottom: 1.5em !important;
             }
         }
     </style>
