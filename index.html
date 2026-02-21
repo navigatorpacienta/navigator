@@ -7,7 +7,7 @@
     <title>Навигатор пациента | ГБУЗ МО МОКПТД филиал Клинский</title>
   
     <style>
-        /* ===== ШРИФТЫ (по брендбуку) ===== */
+        /* ===== ШРИФТЫ ===== */
         @font-face {
             font-family: 'Montserrat';
             src: url('./fonts/montserrat-cyrillic-400.woff2') format('woff2');
@@ -66,12 +66,12 @@
             font-display: swap;
         }
         
-        /* ===== ЦВЕТОВАЯ ПАЛИТРА (мягкая) ===== */
+        /* ===== ЦВЕТА ===== */
         :root {
             --primary-red: #F4364C;
             --dark-gray: #505759;
             --medium-gray: #919D9D;
-            --dark-blue: #365ABD;        /* мягкий синий для заголовков */
+            --dark-blue: #365ABD;
             --medium-blue: #5F8DDA;
             --light-blue: #B8C9E1;
             
@@ -113,6 +113,7 @@
             margin-bottom: 35px;
             box-shadow: var(--shadow-lg);
             overflow: hidden;
+            min-height: 280px;
         }
         
         .header img.romashka {
@@ -130,18 +131,24 @@
             margin-bottom: 12px;
             font-weight: 500;
             opacity: 0.95;
+            position: relative;
+            z-index: 2;
         }
         .header h1 {
             font-size: 3rem;
             margin-bottom: 18px;
             font-weight: 800;
             line-height: 1.1;
+            position: relative;
+            z-index: 2;
         }
         .header p {
             font-size: 1.3rem;
             opacity: 0.9;
             max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         
         .contact-block {
@@ -158,6 +165,10 @@
             color: var(--dark-blue);
             margin-bottom: 20px;
             line-height: 1.5;
+            font-weight: 700;
+        }
+        .contact-text-red {
+            color: var(--primary-red);
             font-weight: 700;
         }
         .contact-name {
@@ -466,7 +477,78 @@
             font-size: 1rem;
         }
         
+        /* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
+        @media (max-width: 768px) {
+            .header {
+                min-height: auto;
+                padding: 35px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+                word-break: break-word;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            /* Ромашки на мобильных */
+            .header img.romashka {
+                max-width: 40px;
+            }
+            
+            .header img.romashka:nth-of-type(1) { /* левая верхняя */
+                top: 5%;
+                left: 2%;
+                width: 35px;
+            }
+            
+            .header img.romashka:nth-of-type(2) { /* правая верхняя */
+                top: 8%;
+                right: 1%;
+                width: 30px;
+            }
+            
+            .header img.romashka:nth-of-type(3) { /* нижняя левая большая */
+                bottom: 10%;
+                left: 1%;
+                width: 50px;
+                opacity: 0.25;
+            }
+            
+            .header img.romashka:nth-of-type(4) { /* маленькая центральная */
+                top: 20%;
+                left: 40%;
+                width: 25px;
+            }
+            
+            .header img.romashka:nth-of-type(5) { /* большая со сдвигом */
+                bottom: 15%;
+                right: 5%;
+                width: 45px;
+                transform: rotate(5deg);
+                opacity: 0.3;
+            }
+        }
+        
         @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .header img.romashka:nth-of-type(3) { /* поднимаем нижнюю */
+                bottom: 5%;
+            }
+            
+            .header img.romashka:nth-of-type(4) { /* поднимаем центральную */
+                top: 10%;
+            }
+            
             .modal-preview__content { padding: 24px 18px; }
             .section-item { padding: 16px 18px; font-size: 1.1rem; }
             .preview-card { padding: 20px 18px; }
@@ -487,7 +569,7 @@
     </header>
 
     <div class="contact-block">
-        <div class="contact-text">По вопросам доступности или качества оказания медицинской помощи обращайтесь сразу напрямую ко мне.<br>Это решит вопрос здесь и сейчас и поможет нам стать лучше.</div>
+        <div class="contact-text">По вопросам доступности или качества оказания медицинской помощи обращайтесь сразу напрямую ко мне.<br><span class="contact-text-red">Это решит вопрос здесь и сейчас и поможет нам стать лучше.</span></div>
         <div class="contact-name">Лукаш Игорь Александрович</div>
         <div class="contact-position">Заведующий филиалом</div>
         <div class="contact-buttons">
