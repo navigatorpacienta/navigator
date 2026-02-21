@@ -681,63 +681,89 @@
     </div>
 
     <script>
-        function toggleCard(card) { if (card.classList.contains('expandable')) card.classList.toggle('expanded'); }
-        function toggleDropdown(id, e) { e.stopPropagation(); document.getElementById('dropdown-'+id).classList.toggle('show'); e.currentTarget.classList.toggle('expanded'); }
-        document.addEventListener('click', function(e) {
-            if (!e.target.classList.contains('dropdown-toggle') && !e.target.closest('.dropdown-toggle')) {
-                document.querySelectorAll('.dropdown-content.show').forEach(i=>i.classList.remove('show'));
-                document.querySelectorAll('.dropdown-toggle.expanded').forEach(i=>i.classList.remove('expanded'));
-            }
-        });
 
-        // Модальные окна
-        const previewModal = document.getElementById('previewModal');
-        const itemPreviewModal = document.getElementById('itemPreviewModal');
-        const officialChoiceModal = document.getElementById('officialChoiceModal');
-        
-        const modalPreviewBody = document.getElementById('modalPreviewBody');
-        const itemPreviewBody = document.getElementById('itemPreviewBody');
-        
-        const closePreviewBtn = document.getElementById('closePreviewModal');
-        const closeItemPreviewBtn = document.getElementById('closeItemPreviewModal');
-        const closeOfficialChoiceBtn = document.getElementById('closeOfficialChoiceModal');
+// ============================================
+// НАВИГАТОР ПАЦИЕНТА - ПОЛНОСТЬЮ ПЕРЕПИСАННЫЙ СКРИПТ
+// ============================================
 
-        // Данные для карточек
-        const sectionsData = {
+(function() {
+    'use strict';
+
+    // ========== ДАННЫЕ ==========
+    const DATA = {
+        sections: {
             about: {
                 items: [
-                    { name: 'Наши ценности и миссия', link: 'missia.html', preview: 'Здесь вы узнаете, к чему мы стремимся, наши главные цели и принципы работы.' },
-                    { name: 'История Клинского противотуберкулезного диспансера', link: 'https://navigatorpacienta.github.io/istoricheskaya/', preview: 'История о том, как жители Клинского района за свой счет строили первый диспансер, и о врачах-энтузиастах, посвятивших свою жизнь борьбе с туберкулезом.' },
-                    { name: 'История Химкинского противотуберкулезного диспансера', link: 'https://navigatorpacienta.github.io/istoricheskayakhimki/', preview: 'История становления и развития противотуберкулезной службы в Химкинском районе Московской области и о врачах-энтузиастах, посвятивших свою жизнь борьбе с туберкулезом.' }
+                    { 
+                        name: 'Наши ценности и миссия', 
+                        link: 'missia.html', 
+                        preview: 'Здесь вы узнаете, к чему мы стремимся, наши главные цели и принципы работы.' 
+                    },
+                    { 
+                        name: 'История Клинского противотуберкулезного диспансера', 
+                        link: 'https://navigatorpacienta.github.io/istoricheskaya/', 
+                        preview: 'История о том, как жители Клинского района за свой счет строили первый диспансер, и о врачах-энтузиастах, посвятивших свою жизнь борьбе с туберкулезом.' 
+                    },
+                    { 
+                        name: 'История Химкинского противотуберкулезного диспансера', 
+                        link: 'https://navigatorpacienta.github.io/istoricheskayakhimki/', 
+                        preview: 'История становления и развития противотуберкулезной службы в Химкинском районе Московской области и о врачах-энтузиастах, посвятивших свою жизнь борьбе с туберкулезом.' 
+                    }
                 ]
             },
             diagnostics: {
                 items: [
-                    { name: 'Почему важно правильно собрать мокроту', link: 'sbor_mokroti.html', preview: 'Чтобы точно определить, какие лекарства смогут уничтожить бактерию туберкулеза именно в вашем случае, необходимо найти и изучить эту микобактерию в мокроте. А это возможно только в том случае, если мокрота собрана правильно.' }
+                    { 
+                        name: 'Почему важно правильно собрать мокроту', 
+                        link: 'sbor_mokroti.html', 
+                        preview: 'Чтобы точно определить, какие лекарства смогут уничтожить бактерию туберкулеза именно в вашем случае, необходимо найти и изучить эту микобактерию в мокроте. А это возможно только в том случае, если мокрота собрана правильно.' 
+                    }
                 ]
             },
             treatment: {
                 items: [
-                    { name: 'Как правильно принимать лекарства', link: 'Pacientam_o_preparatax.html', preview: 'Ознакомившись с этой информацией, вы станете осознанно подходить к приему лекарств, сможете контролировать процесс и отслеживать возможные побочные эффекты. Вы поймете, почему и когда проводятся необходимые обследования.' },
-                    { name: 'Почему нельзя пропускать прием лекарств', link: 'nelzya_propuskat.html', preview: 'Перерывы в лечении приводят к привыканию микробов к таблеткам, и тогда лечение перестает быть эффективным. Чтобы узнать, почему так происходит, нажмите "перейти"' }
+                    { 
+                        name: 'Как правильно принимать лекарства', 
+                        link: 'Pacientam_o_preparatax.html', 
+                        preview: 'Ознакомившись с этой информацией, вы станете осознанно подходить к приему лекарств, сможете контролировать процесс и отслеживать возможные побочные эффекты. Вы поймете, почему и когда проводятся необходимые обследования.' 
+                    },
+                    { 
+                        name: 'Почему нельзя пропускать прием лекарств', 
+                        link: 'nelzya_propuskat.html', 
+                        preview: 'Перерывы в лечении приводят к привыканию микробов к таблеткам, и тогда лечение перестает быть эффективным. Чтобы узнать, почему так происходит, нажмите "перейти"' 
+                    }
                 ]
             },
             prevention: {
                 items: [
-                    { name: 'Организация работы в производственном очаге туберкулеза', link: 'https://navigatorpacienta.github.io/informirovanie_v_ochagah_tuberculeza/', preview: 'Вы поймете, почему необходимо проводить обследование контактных лиц. Это единственный способ своевременно предупредить развитие болезни или найти ее на самой ранней стадии.' },
-                    { name: 'О профосмотрах на туберкулез', link: 'https://navigatorpacienta.github.io/o_profosmotrax_na_tuberkulez/', preview: 'Этот текст сформирует понимание того, как организована работа системы здравоохранения по раннему выявлению туберкулеза.' }
+                    { 
+                        name: 'Организация работы в производственном очаге туберкулеза', 
+                        link: 'https://navigatorpacienta.github.io/informirovanie_v_ochagah_tuberculeza/', 
+                        preview: 'Вы поймете, почему необходимо проводить обследование контактных лиц. Это единственный способ своевременно предупредить развитие болезни или найти ее на самой ранней стадии.' 
+                    },
+                    { 
+                        name: 'О профосмотрах на туберкулез', 
+                        link: 'https://navigatorpacienta.github.io/o_profosmotrax_na_tuberkulez/', 
+                        preview: 'Этот текст сформирует понимание того, как организована работа системы здравоохранения по раннему выявлению туберкулеза.' 
+                    }
                 ]
             },
             feedback: {
                 items: [
-                    { name: 'Оставить замечания или предложения', link: 'https://forms.gle/bPcvrbcpFhjjPZai6', preview: 'Здесь вы можете анонимно оставить свои замечания или предложения по работе нашего отделения. Нам важно ваше мнение!' },
-                    { name: 'Анкета удовлетворенности и комфорта пациента', link: 'https://forms.gle/cviJBeGh2gwP1Gxy5', preview: 'Пожалуйста, заполните краткую анкету — это поможет нам стать лучше и учесть ваши пожелания.' }
+                    { 
+                        name: 'Оставить замечания или предложения', 
+                        link: 'https://forms.gle/bPcvrbcpFhjjPZai6', 
+                        preview: 'Здесь вы можете анонимно оставить свои замечания или предложения по работе нашего отделения. Нам важно ваше мнение!' 
+                    },
+                    { 
+                        name: 'Анкета удовлетворенности и комфорта пациента', 
+                        link: 'https://forms.gle/cviJBeGh2gwP1Gxy5', 
+                        preview: 'Пожалуйста, заполните краткую анкету — это поможет нам стать лучше и учесть ваши пожелания.' 
+                    }
                 ]
             }
-        };
-
-        // Данные для прямых ссылок (без первого модального окна)
-        const directLinksData = {
+        },
+        directLinks: {
             quality: {
                 link: 'kachestvo_vmeste.html',
                 preview: 'Важно понять: мы не сможем становиться лучше без обратной связи от вас. Нам очень важно ваше мнение!'
@@ -750,150 +776,229 @@
                 link: 'https://navigatorpacienta.github.io/o_hirurgicheskom_lechenii/',
                 preview: 'Из этого раздела вы узнаете, что хирургическое лечение туберкулеза — это современный, безопасный и эффективный метод, который помогает добиться стойкого и благоприятного результата.'
             }
+        }
+    };
+
+    // ========== ЭЛЕМЕНТЫ DOM ==========
+    const elements = {
+        previewModal: document.getElementById('previewModal'),
+        itemPreviewModal: document.getElementById('itemPreviewModal'),
+        officialChoiceModal: document.getElementById('officialChoiceModal'),
+        modalPreviewBody: document.getElementById('modalPreviewBody'),
+        itemPreviewBody: document.getElementById('itemPreviewBody'),
+        closePreviewBtn: document.getElementById('closePreviewModal'),
+        closeItemPreviewBtn: document.getElementById('closeItemPreviewModal'),
+        closeOfficialChoiceBtn: document.getElementById('closeOfficialChoiceModal')
+    };
+
+    // ========== УПРАВЛЕНИЕ МОДАЛЬНЫМИ ОКНАМИ ==========
+    const modalManager = {
+        open: function(modal) {
+            if (modal) modal.classList.add('active');
+        },
+        close: function(modal) {
+            if (modal) modal.classList.remove('active');
+        },
+        closeAll: function() {
+            document.querySelectorAll('.modal-preview.active').forEach(m => m.classList.remove('active'));
+        }
+    };
+
+    // ========== УПРАВЛЕНИЕ ВЫПАДАЮЩИМИ СПИСКАМИ ==========
+    function initDropdowns() {
+        // Переключение карточек
+        window.toggleCard = function(card) {
+            if (card?.classList.contains('expandable')) {
+                card.classList.toggle('expanded');
+            }
         };
 
-        // Функция открытия первого модального окна (список разделов)
-        function openSectionList(key) {
-            const data = sectionsData[key];
-            if (!data) return;
+        // Переключение выпадающих списков
+        window.toggleDropdown = function(id, event) {
+            event?.stopPropagation();
             
-            let html = '<div class="section-list">';
-            data.items.forEach((item, index) => {
-                html += `<div class="section-item" data-section="${key}" data-itemindex="${index}">${item.name}</div>`;
+            const dropdown = document.getElementById('dropdown-' + id);
+            const toggle = event?.currentTarget;
+            
+            if (!dropdown) return;
+            
+            // Закрываем все другие
+            document.querySelectorAll('.dropdown-content.show').forEach(el => {
+                if (el.id !== 'dropdown-' + id) el.classList.remove('show');
             });
-            html += '</div>';
-            modalPreviewBody.innerHTML = html;
-            previewModal.classList.add('active');
-
-            document.querySelectorAll('#modalPreviewBody .section-item').forEach(el => {
-                el.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const sectionKey = el.dataset.section;
-                    const idx = el.dataset.itemindex;
-                    
-                    const section = sectionsData[sectionKey];
-                    const item = section.items[idx];
-                    
-                    showItemPreview(item.link, item.preview);
-                });
+            document.querySelectorAll('.dropdown-toggle.expanded').forEach(el => {
+                if (el !== toggle) el.classList.remove('expanded');
             });
-        }
+            
+            // Переключаем текущий
+            dropdown.classList.toggle('show');
+            if (toggle) toggle.classList.toggle('expanded');
+        };
 
-        // Функция открытия второго модального окна (превью)
-        function showItemPreview(link, previewText) {
-            let html = `
-                <div class="preview-card">
-                    <div class="preview-card__text">${previewText}</div>
-                    <a href="${link}" class="preview-card__button" target="_blank">Перейти →</a>
-                </div>
-            `;
-            itemPreviewBody.innerHTML = html;
-            itemPreviewModal.classList.add('active');
-        }
+        // Закрытие при клике вне
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.dropdown-toggle') && !e.target.closest('.dropdown-content')) {
+                document.querySelectorAll('.dropdown-content.show').forEach(d => d.classList.remove('show'));
+                document.querySelectorAll('.dropdown-toggle.expanded').forEach(t => t.classList.remove('expanded'));
+            }
+        });
+    }
 
-        // Закрытие модальных окон
-        function closeModal(modal) { modal.classList.remove('active'); }
+    // ========== ОТОБРАЖЕНИЕ КОНТЕНТА ==========
+    function showSectionList(sectionKey) {
+        const section = DATA.sections[sectionKey];
+        if (!section) return;
+
+        let html = '<div class="section-list">';
+        section.items.forEach((item, index) => {
+            html += `<div class="section-item" data-section="${sectionKey}" data-index="${index}">${item.name}</div>`;
+        });
+        html += '</div>';
         
-        closePreviewBtn.addEventListener('click', () => closeModal(previewModal));
-        closeItemPreviewBtn.addEventListener('click', () => closeModal(itemPreviewModal));
-        closeOfficialChoiceBtn.addEventListener('click', () => closeModal(officialChoiceModal));
-        
-        previewModal.addEventListener('click', (e) => { if (e.target === previewModal) closeModal(previewModal); });
-        itemPreviewModal.addEventListener('click', (e) => { if (e.target === itemPreviewModal) closeModal(itemPreviewModal); });
-        officialChoiceModal.addEventListener('click', (e) => { if (e.target === officialChoiceModal) closeModal(officialChoiceModal); });
+        elements.modalPreviewBody.innerHTML = html;
+        modalManager.open(elements.previewModal);
 
-        // Обработка кликов по карточкам
+        // Добавляем обработчики на элементы
+        document.querySelectorAll('#modalPreviewBody .section-item').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const key = this.dataset.section;
+                const idx = this.dataset.index;
+                const item = DATA.sections[key].items[idx];
+                showItemPreview(item.link, item.preview);
+            });
+        });
+    }
+
+    function showItemPreview(link, previewText) {
+        const html = `
+            <div class="preview-card">
+                <div class="preview-card__text">${previewText}</div>
+                <a href="${link}" class="preview-card__button" target="_blank">Перейти →</a>
+            </div>
+        `;
+        elements.itemPreviewBody.innerHTML = html;
+        modalManager.open(elements.itemPreviewModal);
+    }
+
+    // ========== ОБРАБОТЧИКИ КАРТОЧЕК ==========
+    function initCards() {
         document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('click', (e) => {
-                // Если это ссылка (тег A), не предотвращаем переход
-                if (card.tagName === 'A') {
-                    return true; // разрешаем стандартный переход
+            card.addEventListener('click', function(e) {
+                // Пропускаем клики по выпадающим элементам
+                if (e.target.closest('.dropdown-toggle') || 
+                    e.target.closest('.dropdown-content') || 
+                    e.target.closest('.link-item')) {
+                    return;
                 }
-                
+
+                // Обычные ссылки
+                if (this.tagName === 'A') return;
+
                 e.preventDefault();
-                
-                // Карточки с выпадающим списком (expandable) - открываем первое модальное окно
-                if (card.classList.contains('expandable')) {
-                    const key = card.dataset.preview;
-                    if (key && sectionsData[key]) {
-                        openSectionList(key);
-                    }
+
+                // Expandable карточки
+                if (this.classList.contains('expandable') && this.dataset.preview) {
+                    const key = this.dataset.preview;
+                    if (DATA.sections[key]) showSectionList(key);
                 }
-                
-                // Карточки с прямыми ссылками (data-direct) - открываем второе модальное окно
-                else if (card.dataset.direct) {
-                    const key = card.dataset.direct;
-                    if (key && directLinksData[key]) {
-                        const data = directLinksData[key];
+                // Карточки с прямыми ссылками
+                else if (this.dataset.direct) {
+                    const key = this.dataset.direct;
+                    if (DATA.directLinks[key]) {
+                        const data = DATA.directLinks[key];
                         showItemPreview(data.link, data.preview);
                     }
                 }
-                
-                // Карточка официального сайта
-                else if (card.dataset.official) {
-                    officialChoiceModal.classList.add('active');
+                // Официальный сайт
+                else if (this.dataset.official) {
+                    modalManager.open(elements.officialChoiceModal);
                 }
             });
         });
+    }
 
-        // Обработка выбора отделения в официальной карточке
+    // ========== ОБРАБОТЧИКИ МОДАЛЬНЫХ ОКОН ==========
+    function initModals() {
+        // Закрытие по кнопкам
+        elements.closePreviewBtn?.addEventListener('click', () => modalManager.close(elements.previewModal));
+        elements.closeItemPreviewBtn?.addEventListener('click', () => modalManager.close(elements.itemPreviewModal));
+        elements.closeOfficialChoiceBtn?.addEventListener('click', () => modalManager.close(elements.officialChoiceModal));
+
+        // Закрытие по клику на фон
+        [elements.previewModal, elements.itemPreviewModal, elements.officialChoiceModal].forEach(modal => {
+            modal?.addEventListener('click', (e) => {
+                if (e.target === modal) modalManager.close(modal);
+            });
+        });
+
+        // Выбор отделения
         document.querySelectorAll('[data-official-choice]').forEach(el => {
-            el.addEventListener('click', () => {
-                const choice = el.dataset.officialChoice;
+            el.addEventListener('click', function() {
+                const choice = this.dataset.officialChoice;
                 let link = '';
                 
-                if (choice === 'klin') {
-                    link = 'https://mokptd.ru/filial-klinskij/';
-                } else if (choice === 'khimki') {
-                    link = 'https://mokptd.ru/ximkinskoe-otdelenie/';
-                }
+                if (choice === 'klin') link = 'https://mokptd.ru/filial-klinskij/';
+                else if (choice === 'khimki') link = 'https://mokptd.ru/ximkinskoe-otdelenie/';
                 
-                // Закрываем окно выбора
-                closeModal(officialChoiceModal);
+                modalManager.close(elements.officialChoiceModal);
                 
-                // Открываем второе модальное окно с одинаковым текстом для обоих отделений
                 const previewText = 'На сайте вы сможете познакомиться с нашими врачами, увидеть расписание приема, а также перейти на главный сайт МОКПТД или страницу стационара.';
                 showItemPreview(link, previewText);
             });
         });
+    }
 
-        function centerLastCardIfAlone() {
-            const grid = document.getElementById('cardGrid');
-            const cards = Array.from(grid.children);
-            
-            cards.forEach(card => {
-                card.classList.remove('centered');
-                card.style.width = '';
-                card.style.maxWidth = '';
-            });
-
-            const firstCard = cards[0];
-            if (!firstCard) return;
-
-            const cardWidth = firstCard.offsetWidth;
-            const gridWidth = grid.offsetWidth;
-            const cardMinWidth = 320;
-            const gap = 25;
-            
-            let cardsPerRow = Math.floor((gridWidth + gap) / (cardMinWidth + gap));
-            cardsPerRow = Math.max(1, cardsPerRow);
-            
-            const totalCards = cards.length;
-            const remainder = totalCards % cardsPerRow;
-            
-            if (remainder === 1) {
-                const lastCard = cards[totalCards - 1];
-                lastCard.classList.add('centered');
-                lastCard.style.width = cardWidth + 'px';
-                lastCard.style.maxWidth = cardWidth + 'px';
-            }
-        }
-
-        window.addEventListener('load', function() {
-            setTimeout(centerLastCardIfAlone, 50);
+    // ========== ЦЕНТРИРОВАНИЕ ПОСЛЕДНЕЙ КАРТОЧКИ ==========
+    function centerLastCard() {
+        const grid = document.getElementById('cardGrid');
+        if (!grid) return;
+        
+        const cards = Array.from(grid.children);
+        cards.forEach(c => {
+            c.classList.remove('centered');
+            c.style.width = c.style.maxWidth = '';
         });
-        window.addEventListener('resize', centerLastCardIfAlone);
-        window.addEventListener('pageshow', centerLastCardIfAlone);
-    </script>
+
+        if (cards.length === 0) return;
+
+        const firstCard = cards[0];
+        const cardWidth = firstCard.offsetWidth;
+        const gridWidth = grid.offsetWidth;
+        const cardMinWidth = 320;
+        const gap = 25;
+        
+        let cardsPerRow = Math.floor((gridWidth + gap) / (cardMinWidth + gap));
+        cardsPerRow = Math.max(1, cardsPerRow);
+        
+        if (cards.length % cardsPerRow === 1) {
+            const lastCard = cards[cards.length - 1];
+            lastCard.classList.add('centered');
+            lastCard.style.width = lastCard.style.maxWidth = cardWidth + 'px';
+        }
+    }
+
+    // ========== ИНИЦИАЛИЗАЦИЯ ==========
+    function init() {
+        initDropdowns();
+        initCards();
+        initModals();
+        
+        // Центрирование при загрузке и изменении размера
+        window.addEventListener('load', () => setTimeout(centerLastCard, 50));
+        window.addEventListener('resize', centerLastCard);
+        window.addEventListener('pageshow', centerLastCard);
+    }
+
+    // Запускаем после полной загрузки DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+})();
+
+</script>
 </body>
 </html>
