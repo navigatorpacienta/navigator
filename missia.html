@@ -171,7 +171,7 @@
             }
         }
 
-        /* Адаптивные отступы и ширина - максимально маленькие симметричные отступы */
+        /* Адаптивные отступы и ширина */
         @media (max-width: 768px) {
             body {
                 padding: 0;
@@ -179,10 +179,19 @@
             
             .container {
                 max-width: 100% !important;
-                margin: 8px !important; /* Симметричные отступы 8px со всех сторон */
-                padding: 24px 20px !important;
+                margin: 8px !important;
+                padding: 20px 16px !important;
                 border-radius: 12px !important;
                 width: auto !important;
+            }
+            
+            /* Растягиваем зеленые блоки - убираем лишние паддинги по бокам */
+            .section {
+                padding: 20px 16px !important;  /* Уменьшил боковые отступы с 20px до 16px */
+                margin-left: -4px !important;    /* Компенсация для растягивания */
+                margin-right: -4px !important;
+                width: calc(100% + 8px) !important; /* Делаем блок шире контейнера */
+                border-radius: 14px !important;
             }
             
             h1 {
@@ -201,11 +210,6 @@
                 line-height: 1.6 !important;
             }
             
-            .section {
-                padding: 20px 20px !important;
-                margin-bottom: 24px !important;
-            }
-            
             ul {
                 padding-left: 20px !important;
             }
@@ -215,11 +219,19 @@
             }
         }
         
-        /* Для очень маленьких экранов - еще меньше отступы */
+        /* Для очень маленьких экранов */
         @media (max-width: 375px) {
             .container {
-                margin: 4px !important; /* Симметричные отступы 4px со всех сторон */
+                margin: 4px !important;
                 padding: 16px 12px !important;
+            }
+            
+            /* Еще больше растягиваем зеленые блоки */
+            .section {
+                padding: 16px 12px !important;
+                margin-left: -4px !important;
+                margin-right: -4px !important;
+                width: calc(100% + 8px) !important;
             }
             
             h1 {
@@ -234,12 +246,8 @@
                 font-size: 16px !important;
             }
             
-            .section {
-                padding: 12px 12px !important;
-            }
-            
             ul {
-                padding-left: 16px !important;
+                padding-left: 18px !important;
             }
         }
     </style>
