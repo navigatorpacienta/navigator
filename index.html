@@ -585,31 +585,41 @@
     </div>
 
     <div class="grid" id="cardGrid">
+        <!-- Карточки с выпадающими списками (expandable) - оставляем как есть -->
         <div class="card expandable" data-preview="about">
             <div class="card-header"><div class="card-icon">🏥</div><div class="card-title">О нашем учреждении</div></div>
         </div>
-        <div class="card card-link" data-preview="quality" style="cursor:pointer;">
+        
+        <!-- Эти карточки теперь открывают сразу второе модальное окно (без первого) -->
+        <div class="card card-link" data-direct="quality" style="cursor:pointer;">
             <div class="card-header"><div class="card-icon">🤝</div><div class="card-title">Как мы улучшаем качество нашей работы вместе с вами</div></div>
         </div>
-        <div class="card card-link" data-preview="general_info">
+        
+        <div class="card card-link" data-direct="general_info">
             <div class="card-header">
                 <div class="card-icon">📘</div>
                 <div class="card-title">Общая информация для пациентов о туберкулезе</div>
             </div>
         </div>
+        
         <div class="card expandable" data-preview="diagnostics">
             <div class="card-header"><div class="card-icon">🔬</div><div class="card-title">Диагностика</div></div>
         </div>
+        
         <div class="card expandable" data-preview="treatment">
             <div class="card-header"><div class="card-icon">💊</div><div class="card-title">Консервативное лечение</div></div>
         </div>
-        <div class="card card-link" data-preview="surgery" style="cursor:pointer;">
+        
+        <div class="card card-link" data-direct="surgery" style="cursor:pointer;">
             <div class="card-header"><div class="card-icon">⚕️</div><div class="card-title">Хирургическое лечение</div></div>
         </div>
+        
         <div class="card expandable" data-preview="prevention">
             <div class="card-header"><div class="card-icon">🛡️</div><div class="card-title">Профилактика и раннее выявление туберкулёза</div></div>
         </div>
+        
         <a href="faq.html" class="card card-link"><div class="card-header"><div class="card-icon">❓</div><div class="card-title">Ответы на частые вопросы</div></div></a>
+        
         <div class="card expandable" onclick="toggleCard(this)">
             <div class="card-header"><div class="card-icon">⚖️</div><div class="card-title">Нормативная база</div></div>
             <div class="link-list">
@@ -630,17 +640,20 @@
                 </div>
             </div>
         </div>
+        
         <div class="card expandable" data-preview="feedback">
             <div class="card-header"><div class="card-icon">💬</div><div class="card-title">Обратная связь</div></div>
         </div>
-        <div class="card card-link" data-preview="official">
+        
+        <!-- Карточка официального сайта с двумя модальными окнами -->
+        <div class="card card-link" data-official="true" style="cursor:pointer;">
             <div class="card-header"><div class="card-icon">🌐</div><div class="card-title">Официальный сайт</div></div>
         </div>
     </div>
 
     <footer class="footer"><p>2026</p><p>г.о. Клин</p></footer>
 
-    <!-- Основное модальное окно для списка разделов -->
+    <!-- Первое модальное окно для списка разделов (только для expandable карточек) -->
     <div class="modal-preview" id="previewModal">
         <div class="modal-preview__content">
             <button class="modal-preview__close" id="closePreviewModal">&times;</button>
@@ -648,21 +661,21 @@
         </div>
     </div>
 
-    <!-- Модальное окно для карточки "Официальный сайт" -->
-    <div class="modal-preview" id="officialModal">
+    <!-- Второе модальное окно для превью -->
+    <div class="modal-preview" id="itemPreviewModal">
         <div class="modal-preview__content">
-            <button class="modal-preview__close" id="closeOfficialModal">&times;</button>
-            <div class="preview-card">
-                <div class="preview-card__text" style="font-size:1.2rem; text-align:center;">
-                    На сайте вы сможете познакомиться с нашими врачами, увидеть расписание приёма, а также перейти на главный сайт МОКПТД или страницы стационаров.
-                </div>
-                <div style="display:flex; flex-direction:column; gap:12px; margin-top:20px;">
-                    <a href="https://mokptd.ru/" class="preview-card__button" target="_blank" style="width:auto;">🏥 Главный сайт МОКПТД</a>
-                    <a href="https://mokptd.ru/stationary/" class="preview-card__button" target="_blank" style="width:auto;">🛏 Страницы стационаров</a>
-                </div>
-                <p style="text-align:center; margin-top:24px; color:#505759; font-size:0.95rem;">
-                    Выберите нужный раздел для перехода
-                </p>
+            <button class="modal-preview__close" id="closeItemPreviewModal">&times;</button>
+            <div id="itemPreviewBody"></div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для выбора отделений (официальный сайт) -->
+    <div class="modal-preview" id="officialChoiceModal">
+        <div class="modal-preview__content">
+            <button class="modal-preview__close" id="closeOfficialChoiceModal">&times;</button>
+            <div class="section-list">
+                <div class="section-item" data-official-choice="klin">Клинское отделение</div>
+                <div class="section-item" data-official-choice="khimki">Химкинское отделение</div>
             </div>
         </div>
     </div>
@@ -677,30 +690,25 @@
             }
         });
 
-        const modal = document.getElementById('previewModal');
-        const modalBody = document.getElementById('modalPreviewBody');
-        const closeBtn = document.getElementById('closePreviewModal');
+        // Модальные окна
+        const previewModal = document.getElementById('previewModal');
+        const itemPreviewModal = document.getElementById('itemPreviewModal');
+        const officialChoiceModal = document.getElementById('officialChoiceModal');
+        
+        const modalPreviewBody = document.getElementById('modalPreviewBody');
+        const itemPreviewBody = document.getElementById('itemPreviewBody');
+        
+        const closePreviewBtn = document.getElementById('closePreviewModal');
+        const closeItemPreviewBtn = document.getElementById('closeItemPreviewModal');
+        const closeOfficialChoiceBtn = document.getElementById('closeOfficialChoiceModal');
 
+        // Данные для карточек
         const sectionsData = {
             about: {
                 items: [
                     { name: 'Наши ценности и миссия', link: 'missia.html', preview: 'Здесь вы узнаете, к чему мы стремимся, наши главные цели и принципы работы.' },
                     { name: 'История Клинского противотуберкулезного диспансера', link: 'https://navigatorpacienta.github.io/istoricheskaya/', preview: 'История о том, как жители Клинского района за свой счет строили первый диспансер, и о врачах-энтузиастах, посвятивших свою жизнь борьбе с туберкулезом.' },
                     { name: 'История Химкинского противотуберкулезного диспансера', link: 'https://navigatorpacienta.github.io/istoricheskayakhimki/', preview: 'История становления и развития противотуберкулезной службы в Химкинском районе Московской области и о врачах-энтузиастах, посвятивших свою жизнь борьбе с туберкулезом.' }
-                ]
-            },
-            quality: {
-                items: [
-                    { name: 'Как мы улучшаем качество', link: 'kachestvo_vmeste.html', preview: 'Важно понять: мы не сможем становиться лучше без обратной связи от вас. Нам очень важно ваше мнение!' }
-                ]
-            },
-            general_info: {
-                items: [
-                    {
-                        name: 'Общая информация для пациентов о туберкулезе',
-                        link: 'informacia_iz_KK.html',
-                        preview: 'Прочитав этот текст, вы узнаете, что такое туберкулез и как он передается, какие симптомы должны насторожить и какие обследования нужно пройти для диагностики. Вы поймете, как и где лечат туберкулез, почему так важно не прерывать прием препаратов и что делать при побочных эффектах. Также вы получите рекомендации по питанию и образу жизни во время лечения и узнаете, зачем нужно диспансерное наблюдение после выздоровления.'
-                    }
                 ]
             },
             diagnostics: {
@@ -714,11 +722,6 @@
                     { name: 'Почему нельзя пропускать прием лекарств', link: 'nelzya_propuskat.html', preview: 'Перерывы в лечении приводят к привыканию микробов к таблеткам, и тогда лечение перестает быть эффективным. Чтобы узнать, почему так происходит, нажмите "перейти"' }
                 ]
             },
-            surgery: {
-                items: [
-                    { name: 'Хирургическое лечение', link: 'https://navigatorpacienta.github.io/o_hirurgicheskom_lechenii/', preview: 'Из этого раздела вы узнаете, что хирургическое лечение туберкулеза — это современный, безопасный и эффективный метод, который помогает добиться стойкого и благоприятного результата.' }
-                ]
-            },
             prevention: {
                 items: [
                     { name: 'Организация работы в производственном очаге туберкулеза', link: 'https://navigatorpacienta.github.io/informirovanie_v_ochagah_tuberculeza/', preview: 'Вы поймете, почему необходимо проводить обследование контактных лиц. Это единственный способ своевременно предупредить развитие болезни или найти ее на самой ранней стадии.' },
@@ -730,15 +733,26 @@
                     { name: 'Оставить замечания или предложения', link: 'https://forms.gle/bPcvrbcpFhjjPZai6', preview: 'Здесь вы можете анонимно оставить свои замечания или предложения по работе нашего отделения. Нам важно ваше мнение!' },
                     { name: 'Анкета удовлетворенности и комфорта пациента', link: 'https://forms.gle/cviJBeGh2gwP1Gxy5', preview: 'Пожалуйста, заполните краткую анкету — это поможет нам стать лучше и учесть ваши пожелания.' }
                 ]
-            },
-            official: {
-                items: [
-                    { name: 'Клинское отделение', link: 'https://mokptd.ru/filial-klinskij/', preview: 'Перейти на официальный сайт Клинского отделения.' },
-                    { name: 'Химкинское отделение', link: 'https://mokptd.ru/ximkinskoe-otdelenie/', preview: 'Перейти на официальный сайт Химкинского отделения.' }
-                ]
             }
         };
 
+        // Данные для прямых ссылок (без первого модального окна)
+        const directLinksData = {
+            quality: {
+                link: 'kachestvo_vmeste.html',
+                preview: 'Важно понять: мы не сможем становиться лучше без обратной связи от вас. Нам очень важно ваше мнение!'
+            },
+            general_info: {
+                link: 'informacia_iz_KK.html',
+                preview: 'Прочитав этот текст, вы узнаете, что такое туберкулез и как он передается, какие симптомы должны насторожить и какие обследования нужно пройти для диагностики. Вы поймете, как и где лечат туберкулез, почему так важно не прерывать прием препаратов и что делать при побочных эффектах. Также вы получите рекомендации по питанию и образу жизни во время лечения и узнаете, зачем нужно диспансерное наблюдение после выздоровления.'
+            },
+            surgery: {
+                link: 'https://navigatorpacienta.github.io/o_hirurgicheskom_lechenii/',
+                preview: 'Из этого раздела вы узнаете, что хирургическое лечение туберкулеза — это современный, безопасный и эффективный метод, который помогает добиться стойкого и благоприятного результата.'
+            }
+        };
+
+        // Функция открытия первого модального окна (список разделов)
         function openSectionList(key) {
             const data = sectionsData[key];
             if (!data) return;
@@ -748,71 +762,94 @@
                 html += `<div class="section-item" data-section="${key}" data-itemindex="${index}">${item.name}</div>`;
             });
             html += '</div>';
-            modalBody.innerHTML = html;
-            modal.classList.add('active');
+            modalPreviewBody.innerHTML = html;
+            previewModal.classList.add('active');
 
-            document.querySelectorAll('.section-item').forEach(el => {
+            document.querySelectorAll('#modalPreviewBody .section-item').forEach(el => {
                 el.addEventListener('click', (e) => {
                     e.stopPropagation();
                     const sectionKey = el.dataset.section;
                     const idx = el.dataset.itemindex;
                     
-                    if (sectionKey !== 'official') {
-                        showItemPreview(sectionKey, idx);
-                    } else {
-                        const link = sectionsData[sectionKey].items[idx].link;
-                        window.open(link, '_blank');
-                        closeModal();
-                    }
+                    const section = sectionsData[sectionKey];
+                    const item = section.items[idx];
+                    
+                    showItemPreview(item.link, item.preview);
                 });
             });
         }
 
-        function showItemPreview(sectionKey, itemIndex) {
-            const section = sectionsData[sectionKey];
-            const item = section.items[itemIndex];
-            
+        // Функция открытия второго модального окна (превью)
+        function showItemPreview(link, previewText) {
             let html = `
                 <div class="preview-card">
-                    <div class="preview-card__text">${item.preview}</div>
-                    <a href="${item.link}" class="preview-card__button" target="_blank">Перейти →</a>
+                    <div class="preview-card__text">${previewText}</div>
+                    <a href="${link}" class="preview-card__button" target="_blank">Перейти →</a>
                 </div>
             `;
-            modalBody.innerHTML = html;
-            modal.classList.add('active');
+            itemPreviewBody.innerHTML = html;
+            itemPreviewModal.classList.add('active');
         }
 
-        function closeModal() { modal.classList.remove('active'); }
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+        // Закрытие модальных окон
+        function closeModal(modal) { modal.classList.remove('active'); }
+        
+        closePreviewBtn.addEventListener('click', () => closeModal(previewModal));
+        closeItemPreviewBtn.addEventListener('click', () => closeModal(itemPreviewModal));
+        closeOfficialChoiceBtn.addEventListener('click', () => closeModal(officialChoiceModal));
+        
+        previewModal.addEventListener('click', (e) => { if (e.target === previewModal) closeModal(previewModal); });
+        itemPreviewModal.addEventListener('click', (e) => { if (e.target === itemPreviewModal) closeModal(itemPreviewModal); });
+        officialChoiceModal.addEventListener('click', (e) => { if (e.target === officialChoiceModal) closeModal(officialChoiceModal); });
 
-        document.querySelectorAll('[data-preview]').forEach(card => {
+        // Обработка кликов по карточкам
+        document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('click', (e) => {
                 e.preventDefault();
-                const key = card.dataset.preview;
                 
-                // Для карточки "official" открываем специальное модальное окно
-                if (key === 'official') {
-                    document.getElementById('officialModal').classList.add('active');
-                } else {
-                    openSectionList(key);
+                // Карточки с выпадающим списком (expandable) - открываем первое модальное окно
+                if (card.classList.contains('expandable')) {
+                    const key = card.dataset.preview;
+                    if (key && sectionsData[key]) {
+                        openSectionList(key);
+                    }
+                }
+                
+                // Карточки с прямыми ссылками (data-direct) - открываем второе модальное окно
+                else if (card.dataset.direct) {
+                    const key = card.dataset.direct;
+                    if (key && directLinksData[key]) {
+                        const data = directLinksData[key];
+                        showItemPreview(data.link, data.preview);
+                    }
+                }
+                
+                // Карточка официального сайта
+                else if (card.dataset.official) {
+                    officialChoiceModal.classList.add('active');
                 }
             });
         });
-        document.querySelectorAll('.card[data-preview]').forEach(c => c.removeAttribute('onclick'));
 
-        // Закрытие специального модального окна для официального сайта
-        const officialModal = document.getElementById('officialModal');
-        const closeOfficial = document.getElementById('closeOfficialModal');
-
-        closeOfficial.addEventListener('click', () => {
-            officialModal.classList.remove('active');
-        });
-
-        officialModal.addEventListener('click', (e) => {
-            if (e.target === officialModal) {
-                officialModal.classList.remove('active');
-            }
+        // Обработка выбора отделения в официальной карточке
+        document.querySelectorAll('[data-official-choice]').forEach(el => {
+            el.addEventListener('click', () => {
+                const choice = el.dataset.officialChoice;
+                let link = '';
+                
+                if (choice === 'klin') {
+                    link = 'https://mokptd.ru/filial-klinskij/';
+                } else if (choice === 'khimki') {
+                    link = 'https://mokptd.ru/ximkinskoe-otdelenie/';
+                }
+                
+                // Закрываем окно выбора
+                closeModal(officialChoiceModal);
+                
+                // Открываем второе модальное окно с одинаковым текстом для обоих отделений
+                const previewText = 'На сайте вы сможете познакомиться с нашими врачами, увидеть расписание приема, а также перейти на главный сайт МОКОПТД или страницу стационара.';
+                showItemPreview(link, previewText);
+            });
         });
 
         function centerLastCardIfAlone() {
