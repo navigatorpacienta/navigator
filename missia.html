@@ -171,13 +171,18 @@
             }
         }
 
-        /* Адаптивные отступы и ширина */
+        /* Адаптивные отступы и ширина - максимально маленькие симметричные отступы */
         @media (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+            
             .container {
                 max-width: 100% !important;
-                margin: 30px 16px !important;
-                padding: 32px 24px !important;
+                margin: 8px !important; /* Симметричные отступы 8px со всех сторон */
+                padding: 24px 20px !important;
                 border-radius: 12px !important;
+                width: auto !important;
             }
             
             h1 {
@@ -210,11 +215,11 @@
             }
         }
         
-        /* Для очень маленьких экранов */
+        /* Для очень маленьких экранов - еще меньше отступы */
         @media (max-width: 375px) {
             .container {
-                padding: 24px 16px !important;
-                margin: 20px 12px !important;
+                margin: 4px !important; /* Симметричные отступы 4px со всех сторон */
+                padding: 16px 12px !important;
             }
             
             h1 {
@@ -230,11 +235,11 @@
             }
             
             .section {
-                padding: 16px 16px !important;
+                padding: 12px 12px !important;
             }
             
             ul {
-                padding-left: 18px !important;
+                padding-left: 16px !important;
             }
         }
     </style>
