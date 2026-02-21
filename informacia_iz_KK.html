@@ -188,23 +188,22 @@
     
     .container {
         max-width: 100% !important;
-        margin: 0 !important; /* Убираем внешние отступы, чтобы контейнер был вплотную к краям */
-        padding: 16px 0 !important; /* Убираем боковые внутренние отступы */
-        border-radius: 0 !important; /* Убираем скругление */
+        margin: 4px !important; /* Возвращаем исходные отступы контейнера */
+        padding: 16px 8px !important; /* Возвращаем исходные внутренние отступы */
+        border-radius: 10px !important; /* Возвращаем скругление */
         width: auto !important;
     }
     
-    /* Зеленые блоки вплотную к краям белого контейнера */
+    /* Зеленые блоки с исходными отступами, но улучшенной читаемостью */
     .section {
-        padding: 20px 16px !important; /* Добавляем внутренние отступы для текста, чтобы он не прилипал к краям */
-        margin-left: 0 !important; /* Убираем отрицательные отступы */
-        margin-right: 0 !important;
-        width: 100% !important; /* Блок занимает всю ширину */
-        border-radius: 0 !important; /* Убираем скругление */
+        padding: 16px 8px !important; /* Исходные внутренние отступы */
+        margin-left: -8px !important; /* Оставляем растяжение до краев контейнера */
+        margin-right: -8px !important;
+        width: calc(100% + 16px) !important; /* Компенсируем отступы контейнера */
+        border-radius: 8px !important;
         border-left-width: 5px !important;
-        border-right: none !important;
         
-        /* Улучшаем читаемость: добавляем отступы между абзацами */
+        /* Улучшаем читаемость */
         line-height: 1.7 !important;
     }
     
@@ -212,20 +211,19 @@
     .section p,
     .section .definition-block {
         margin-bottom: 1.2em !important; /* Увеличиваем расстояние между абзацами */
-        padding: 0 !important; /* Убираем лишние внутренние отступы */
         font-size: 17px !important;
         line-height: 1.7 !important;
-        text-align: left; /* Выравнивание по левому краю для лучшей читаемости */
-        word-wrap: break-word; /* Включаем перенос длинных слов */
-        overflow-wrap: break-word; /* Современный аналог word-wrap */
-        hyphens: auto; /* Включаем автоматическую расстановку переносов (где возможно) */
+        text-align: left;
+        word-wrap: break-word !important; /* Включаем перенос длинных слов */
+        overflow-wrap: break-word !important;
+        hyphens: auto !important; /* Автоматические переносы */
     }
     
-    /* Стили для списков */
+    /* Стили для списков с переносами */
     .section ul {
         margin-bottom: 1.2em !important;
-        padding-left: 24px !important; /* Стандартный отступ для маркеров списка */
-        padding-right: 8px !important;
+        padding-left: 24px !important;
+        padding-right: 4px !important;
     }
     
     .section li {
@@ -233,9 +231,9 @@
         padding-left: 4px !important;
         font-size: 17px !important;
         line-height: 1.6 !important;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
     }
     
     /* Убираем лишний отступ у первого блока */
@@ -246,14 +244,14 @@
     h1 {
         font-size: 28px !important;
         line-height: 1.3 !important;
-        padding: 0 16px !important; /* Добавляем отступы по бокам для заголовка */
+        padding: 0 4px !important; /* Исходные отступы */
         margin-bottom: 8px !important;
-        word-wrap: break-word;
-        hyphens: auto;
+        word-wrap: break-word !important;
+        hyphens: auto !important;
     }
     
     .subtitle {
-        padding: 0 16px !important;
+        padding: 0 4px !important; /* Исходные отступы */
         font-size: 16px !important;
         line-height: 1.5 !important;
     }
@@ -261,19 +259,21 @@
     h2 {
         font-size: 24px !important;
         line-height: 1.3 !important;
-        margin-bottom: 16px !important; /* Увеличиваем отступ после заголовка */
-        padding: 0 16px 8px 16px !important; /* Отступы по бокам и снизу */
-        word-wrap: break-word;
-        hyphens: auto;
+        margin-bottom: 16px !important; /* Увеличили отступ после заголовка */
+        padding: 0 4px 8px 4px !important; /* Исходные отступы */
+        word-wrap: break-word !important;
+        hyphens: auto !important;
     }
     
-    /* Убираем лишние padding у p внутри блоков, так как мы их задали для .section p */
     p, .definition-block {
-        padding: 0 16px !important; /* Добавляем отступы по бокам для текста вне .section */
+        padding: 0 4px !important; /* Исходные отступы */
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
     }
     
     .page-number {
-        padding: 20px 16px 0 !important;
+        padding: 20px 4px 0 !important;
         margin-top: 24px !important;
     }
 }
