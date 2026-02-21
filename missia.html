@@ -179,30 +179,42 @@
             
             .container {
                 max-width: 100% !important;
-                margin: 8px !important;
-                padding: 20px 16px !important;
-                border-radius: 12px !important;
+                margin: 4px !important; /* Минимальный отступ белого контейнера */
+                padding: 16px 8px !important; /* Минимальные внутренние отступы */
+                border-radius: 10px !important;
                 width: auto !important;
             }
             
-            /* Растягиваем зеленые блоки - убираем лишние паддинги по бокам */
+            /* Зеленые блоки вплотную к краям белого контейнера */
             .section {
-                padding: 20px 16px !important;  /* Уменьшил боковые отступы с 20px до 16px */
-                margin-left: -4px !important;    /* Компенсация для растягивания */
-                margin-right: -4px !important;
-                width: calc(100% + 8px) !important; /* Делаем блок шире контейнера */
-                border-radius: 14px !important;
+                padding: 16px 8px !important; /* Минимальные боковые отступы */
+                margin-left: -8px !important; /* Растягиваем влево до края контейнера */
+                margin-right: -8px !important;
+                width: calc(100% + 16px) !important; /* Компенсируем отступы контейнера */
+                border-radius: 8px !important;
+                border-left-width: 5px !important;
+            }
+            
+            /* Убираем лишний отступ у первого блока */
+            .section:first-of-type {
+                margin-top: 0 !important;
             }
             
             h1 {
                 font-size: 28px !important;
                 line-height: 1.3 !important;
+                padding: 0 4px !important;
+            }
+            
+            .subtitle {
+                padding: 0 4px !important;
             }
             
             h2 {
                 font-size: 24px !important;
                 line-height: 1.3 !important;
-                margin-bottom: 16px !important;
+                margin-bottom: 12px !important;
+                padding: 0 4px 8px 4px !important;
             }
             
             p, ul, li {
@@ -210,25 +222,31 @@
                 line-height: 1.6 !important;
             }
             
+            p {
+                padding: 0 4px !important;
+            }
+            
             ul {
                 padding-left: 20px !important;
+                padding-right: 4px !important;
             }
             
             li {
-                margin-bottom: 14px !important;
+                margin-bottom: 12px !important;
+                padding-left: 4px !important;
             }
         }
         
         /* Для очень маленьких экранов */
         @media (max-width: 375px) {
             .container {
-                margin: 4px !important;
-                padding: 16px 12px !important;
+                margin: 2px !important; /* Еще меньше отступ */
+                padding: 12px 4px !important;
             }
             
-            /* Еще больше растягиваем зеленые блоки */
+            /* Зеленые блоки еще шире */
             .section {
-                padding: 16px 12px !important;
+                padding: 12px 4px !important;
                 margin-left: -4px !important;
                 margin-right: -4px !important;
                 width: calc(100% + 8px) !important;
@@ -247,7 +265,7 @@
             }
             
             ul {
-                padding-left: 18px !important;
+                padding-left: 16px !important;
             }
         }
     </style>
