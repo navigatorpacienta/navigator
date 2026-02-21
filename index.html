@@ -426,8 +426,9 @@
         color: var(--dark-blue);
     }
     .section-item:hover {
-        background: rgba(244, 54, 76, 0.05);
-        color: var(--primary-red);
+        background: rgba(53, 90, 189, 0.08);
+        color: var(--dark-blue);
+        border-color: var(--light-blue);
     }
     
     .preview-card {
@@ -444,7 +445,7 @@
         background: #f8fafc;
         padding: 20px 22px;
         border-radius: 20px;
-        border-left: 4px solid var(--primary-red);
+        border-left: 4px solid var(--dark-blue);
         margin-bottom: 28px;
     }
     .preview-card__button {
@@ -452,18 +453,18 @@
         width: fit-content;
         margin: 0 auto;
         background: transparent;
-        color: var(--primary-red);
+        color: var(--dark-blue);
         font-weight: 600;
         padding: 12px 32px;
         border-radius: 40px;
         text-decoration: none;
         font-size: 1.1rem;
-        border: 2px solid var(--primary-red);
+        border: 2px solid var(--dark-blue);
         transition: background 0.15s;
         text-align: center;
     }
     .preview-card__button:hover { 
-        background: rgba(244, 54, 76, 0.05); 
+        background: rgba(53, 90, 189, 0.05); 
     }
     
     .back-button {
@@ -722,11 +723,7 @@
             const data = sectionsData[key];
             if (!data) return;
             
-            if (data.items.length === 1) {
-                showItemPreview(key, 0);
-                return;
-            }
-            
+            // Для всех карточек, включая "official", показываем список разделов в первом модальном окне
             let html = '<div class="section-list">';
             data.items.forEach((item, index) => {
                 html += `<div class="section-item" data-section="${key}" data-itemindex="${index}">${item.name}</div>`;
@@ -740,7 +737,16 @@
                     e.stopPropagation();
                     const sectionKey = el.dataset.section;
                     const idx = el.dataset.itemindex;
-                    showItemPreview(sectionKey, idx);
+                    
+                    // Для всех карточек, кроме "official", показываем предпросмотр
+                    if (sectionKey !== 'official') {
+                        showItemPreview(sectionKey, idx);
+                    } else {
+                        // Для "official" сразу переходим по ссылке
+                        const link = sectionsData[sectionKey].items[idx].link;
+                        window.open(link, '_blank');
+                        closeModal(); // Закрываем модальное окно после перехода
+                    }
                 });
             });
         }
