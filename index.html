@@ -640,10 +640,30 @@
 
     <footer class="footer"><p>2026</p><p>г.о. Клин</p></footer>
 
+    <!-- Основное модальное окно для списка разделов -->
     <div class="modal-preview" id="previewModal">
         <div class="modal-preview__content">
             <button class="modal-preview__close" id="closePreviewModal">&times;</button>
             <div id="modalPreviewBody"></div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для карточки "Официальный сайт" -->
+    <div class="modal-preview" id="officialModal">
+        <div class="modal-preview__content">
+            <button class="modal-preview__close" id="closeOfficialModal">&times;</button>
+            <div class="preview-card">
+                <div class="preview-card__text" style="font-size:1.2rem; text-align:center;">
+                    На сайте вы сможете познакомиться с нашими врачами, увидеть расписание приёма, а также перейти на главный сайт МОКПТД или страницы стационаров.
+                </div>
+                <div style="display:flex; flex-direction:column; gap:12px; margin-top:20px;">
+                    <a href="https://mokptd.ru/" class="preview-card__button" target="_blank" style="width:auto;">🏥 Главный сайт МОКПТД</a>
+                    <a href="https://mokptd.ru/stationary/" class="preview-card__button" target="_blank" style="width:auto;">🛏 Страницы стационаров</a>
+                </div>
+                <p style="text-align:center; margin-top:24px; color:#505759; font-size:0.95rem;">
+                    Выберите нужный раздел для перехода
+                </p>
+            </div>
         </div>
     </div>
 
@@ -723,7 +743,6 @@
             const data = sectionsData[key];
             if (!data) return;
             
-            // Для всех карточек, включая "official", показываем список разделов в первом модальном окне
             let html = '<div class="section-list">';
             data.items.forEach((item, index) => {
                 html += `<div class="section-item" data-section="${key}" data-itemindex="${index}">${item.name}</div>`;
@@ -738,14 +757,12 @@
                     const sectionKey = el.dataset.section;
                     const idx = el.dataset.itemindex;
                     
-                    // Для всех карточек, кроме "official", показываем предпросмотр
                     if (sectionKey !== 'official') {
                         showItemPreview(sectionKey, idx);
                     } else {
-                        // Для "official" сразу переходим по ссылке
                         const link = sectionsData[sectionKey].items[idx].link;
                         window.open(link, '_blank');
-                        closeModal(); // Закрываем модальное окно после перехода
+                        closeModal();
                     }
                 });
             });
@@ -773,10 +790,30 @@
             card.addEventListener('click', (e) => {
                 e.preventDefault();
                 const key = card.dataset.preview;
-                openSectionList(key);
+                
+                // Для карточки "official" открываем специальное модальное окно
+                if (key === 'official') {
+                    document.getElementById('officialModal').classList.add('active');
+                } else {
+                    openSectionList(key);
+                }
             });
         });
         document.querySelectorAll('.card[data-preview]').forEach(c => c.removeAttribute('onclick'));
+
+        // Закрытие специального модального окна для официального сайта
+        const officialModal = document.getElementById('officialModal');
+        const closeOfficial = document.getElementById('closeOfficialModal');
+
+        closeOfficial.addEventListener('click', () => {
+            officialModal.classList.remove('active');
+        });
+
+        officialModal.addEventListener('click', (e) => {
+            if (e.target === officialModal) {
+                officialModal.classList.remove('active');
+            }
+        });
 
         function centerLastCardIfAlone() {
             const grid = document.getElementById('cardGrid');
