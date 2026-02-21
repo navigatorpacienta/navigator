@@ -40,7 +40,9 @@
             font-display: swap;
         }
 
-        /* Базовые стили для мобильных */
+        /* =========================
+        БАЗОВЫЕ СТИЛИ
+        ========================= */
         * {
             margin: 0;
             padding: 0;
@@ -61,79 +63,102 @@
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f8f8"/><path d="M20,20 L80,80 M80,20 L20,80" stroke="%23e0e0e0" stroke-width="1"/></svg>');
         }
         
+        /* КОНТЕЙНЕР - УВЕЛИЧЕНА ШИРИНА ДЛЯ ДЕСКТОПА */
         .container {
-            max-width: 860px;
-            margin: 60px auto;
-            padding: 48px 56px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 48px 64px;
             background: #ffffff;
             color: #333;
             box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            border-radius: 18px;
-            width: 100%;
+            border-radius: 24px;
+            width: 90%;
         }
         
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
             padding-bottom: 24px;
-            border-bottom: 2px solid #2a6e3b;
+            border-bottom: 3px solid #2a6e3b;
         }
         
         h1 {
             color: #2a6e3b;
-            font-size: 34px;
-            margin-bottom: 12px;
+            font-size: 38px;
+            margin-bottom: 16px;
             letter-spacing: 0.5px;
-            line-height: 1.25;
+            line-height: 1.3;
             font-weight: 700;
             font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
         }
         
         .subtitle {
             color: #555;
-            font-size: 18px;
+            font-size: 20px;
             font-style: italic;
             font-weight: 400;
+            line-height: 1.5;
         }
         
         .section {
-            margin-bottom: 32px;
-            padding: 28px 32px;
+            margin-bottom: 40px;
+            padding: 32px 40px;
             background-color: #f9fdfa;
-            border-left: 5px solid #4a9c5d;
-            border-radius: 14px;
+            border-left: 6px solid #4a9c5d;
+            border-radius: 16px;
             width: 100%;
+            box-shadow: 0 4px 12px rgba(0,40,0,0.03);
         }
         
         h2 {
             color: #2a6e3b;
-            font-size: 28px;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed #b8d8c2;
+            font-size: 32px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px dashed #b8d8c2;
             font-weight: 700;
             line-height: 1.3;
         }
         
-        p, ul, .definition-block {
+        /* =========================
+        УЛУЧШЕНИЕ ЧИТАЕМОСТИ - БОЛЬШИЕ ОТСТУПЫ МЕЖДУ АБЗАЦАМИ
+        ========================= */
+        p, .definition-block, li {
             font-size: 18px;
             color: #333;
-            line-height: 1.75;
+            line-height: 1.8;
             font-weight: 400;
         }
-
+        
+        p {
+            margin-bottom: 1.5em;
+        }
+        
+        .section p:last-of-type {
+            margin-bottom: 0;
+        }
+        
         .definition-block {
-            margin-bottom: 16px;
+            margin-bottom: 1.5em;
+        }
+        
+        .definition-block:last-of-type {
+            margin-bottom: 0;
         }
         
         ul {
-            padding-left: 24px;
-            margin-top: 12px;
+            padding-left: 32px;
+            margin-top: 16px;
+            margin-bottom: 1.5em;
         }
         
         li {
             margin-bottom: 16px;
-            padding-left: 0;
+            padding-left: 8px;
+        }
+        
+        ul:last-of-type {
+            margin-bottom: 0;
         }
         
         strong {
@@ -141,21 +166,6 @@
             color: #1e4d2a;
         }
         
-        .mission {
-            border-left-color: #3a7b4a;
-            background-color: #f0f9f3;
-        }
-        
-        .vision {
-            border-left-color: #5ab972;
-            background-color: #f2fbf4;
-        }
-        
-        .goals {
-            border-left-color: #1e4d2a;
-            background-color: #e8f5eb;
-        }
-
         .info-block {
             border-left-color: #2a6e3b;
             background-color: #f9fdfa;
@@ -170,8 +180,216 @@
             padding-top: 24px;
             font-weight: 400;
         }
-
-        /* Медиа-запросы для планшетов и десктопов (зеленые обводки) */
+        
+        /* =========================
+        КНОПКА ПЕЧАТИ
+        ========================= */
+        .print-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0 20px;
+        }
+        
+        .print-button {
+            background-color: #2a6e3b;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 16px 40px;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(42, 110, 59, 0.3);
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .print-button:hover {
+            background-color: #1e4d2a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(42, 110, 59, 0.4);
+        }
+        
+        .print-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(42, 110, 59, 0.3);
+        }
+        
+        .print-icon {
+            font-size: 24px;
+            line-height: 1;
+        }
+        
+        .print-text {
+            font-size: 20px;
+        }
+        
+        .print-label {
+            text-align: center;
+            font-size: 18px;
+            color: #2a6e3b;
+            margin-bottom: 12px;
+            font-weight: 500;
+            font-style: italic;
+        }
+        
+        /* =========================
+        СТИЛИ ДЛЯ ПЕЧАТИ - ИСПРАВЛЕНО (БЕЗ ПУСТЫХ МЕСТ)
+        ========================= */
+        @media print {
+            /* Скрываем элементы интерфейса */
+            .print-container,
+            .print-label,
+            .print-button {
+                display: none !important;
+            }
+            
+            /* Сбрасываем все фоны и тени */
+            * {
+                background: transparent !important;
+                background-color: white !important;
+                box-shadow: none !important;
+                text-shadow: none !important;
+            }
+            
+            body {
+                background: white;
+                padding: 0.25in;
+                font-size: 11pt;
+                line-height: 1.4;
+                color: black;
+                border: none !important;
+                background-image: none !important;
+                margin: 0;
+            }
+            
+            .container {
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+                border-radius: 0;
+                width: 100%;
+                background: white;
+            }
+            
+            /* РАЗРЕШАЕМ РАЗРЫВЫ СТРАНИЦ - это убирает пустые места */
+            .section {
+                break-inside: auto;        /* Позволяем разрывать блоки между страницами */
+                page-break-inside: auto;    /* Для старых браузеров */
+                break-before: auto;
+                break-after: auto;
+                page-break-before: auto;
+                page-break-after: auto;
+                
+                border-left: 1px solid #aaa; /* Тонкая серая линия вместо зеленой */
+                background: white;
+                padding: 15px 20px;
+                margin: 0 0 15px 0;
+                border-radius: 0;
+                width: 100%;
+            }
+            
+            /* Заголовки не должны отрываться от текста */
+            h1, h2, h3, h4 {
+                break-after: avoid;
+                page-break-after: avoid;
+                break-inside: avoid;
+                page-break-inside: avoid;
+                color: black;
+            }
+            
+            h1 {
+                font-size: 18pt;
+                margin: 0.5cm 0 0.3cm;
+                border-bottom: 1px solid black;
+            }
+            
+            h2 {
+                font-size: 14pt;
+                margin: 0.4cm 0 0.2cm;
+                border-bottom: 1px dashed #666;
+                padding-bottom: 0.2cm;
+                color: black;
+            }
+            
+            /* Сохраняем отступы между абзацами */
+            p {
+                margin-bottom: 0.3cm;
+                orphans: 3;        /* Минимум 3 строки в начале/конце страницы */
+                widows: 3;
+                font-size: 11pt;
+                line-height: 1.4;
+            }
+            
+            ul, ol {
+                margin-bottom: 0.3cm;
+                padding-left: 0.7cm;
+            }
+            
+            li {
+                margin-bottom: 0.1cm;
+                orphans: 2;
+                widows: 2;
+                font-size: 11pt;
+            }
+            
+            /* Убираем зеленые рамки у body */
+            @media (min-width: 768px) {
+                body {
+                    border: none;
+                    padding: 0.25in;
+                }
+            }
+            
+            /* Номера страниц */
+            .page-number {
+                margin-top: 0.5cm;
+                padding-top: 0.2cm;
+                border-top: 1px solid #aaa;
+                font-size: 10pt;
+                color: #333;
+            }
+            
+            /* Предотвращаем разрыв прямо перед списком */
+            ul, ol {
+                break-before: avoid;
+                page-break-before: avoid;
+            }
+            
+            /* Предотвращаем одинокую строку с маркером */
+            li:first-of-type {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            
+            /* Гарантируем, что заголовок и первый абзац на одной странице */
+            h2 + p,
+            h2 + ul,
+            h2 + ol {
+                break-before: avoid;
+                page-break-before: avoid;
+            }
+            
+            /* Убираем фоновый рисунок */
+            body {
+                background-image: none !important;
+            }
+            
+            /* Оптимизация межстрочного интервала */
+            .section {
+                line-height: 1.4;
+            }
+        }
+        
+        /* =========================
+        СТИЛИ ДЛЯ ПЛАНШЕТОВ И ДЕСКТОПОВ (зеленые обводки)
+        ========================= */
         @media (min-width: 768px) {
             body {
                 padding: 20px;
@@ -179,11 +397,14 @@
                 border-right: 8px solid #2a6e3b;
             }
         }
-
-        /* Адаптивные отступы и ширина для мобильных */
+        
+        /* =========================
+        АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ
+        ========================= */
         @media (max-width: 768px) {
             body {
                 padding: 0;
+                border: none;
             }
             
             .container {
@@ -195,7 +416,7 @@
             }
             
             .section {
-                padding: 16px 8px !important;
+                padding: 20px 12px !important;
                 margin-left: -8px !important;
                 margin-right: -8px !important;
                 width: calc(100% + 16px) !important;
@@ -203,67 +424,54 @@
                 border-left-width: 5px !important;
             }
             
-            /* УЛУЧШЕНИЕ ЧИТАЕМОСТИ: БОЛЬШИЕ ОТСТУПЫ МЕЖДУ АБЗАЦАМИ */
             p, .definition-block {
-                padding: 0 4px !important;
                 font-size: 17px !important;
                 line-height: 1.7 !important;
-                margin-top: 0 !important;
-                margin-bottom: 1.5em !important; /* Увеличенный отступ после каждого абзаца */
+                margin-bottom: 1.3em !important;
             }
             
-            /* Убираем отступ у последнего элемента в секции */
-            .section p:last-of-type,
-            .section .definition-block:last-of-type,
-            .section ul:last-of-type {
+            p:last-of-type, .definition-block:last-of-type {
                 margin-bottom: 0 !important;
             }
             
-            .section ul {
-                margin-bottom: 1.5em !important;
-                padding-left: 24px !important;
-                padding-right: 4px !important;
-            }
-            
-            .section li {
-                margin-bottom: 12px !important;
-                padding-left: 4px !important;
-                font-size: 17px !important;
-                line-height: 1.6 !important;
-            }
-            
-            .section:first-of-type {
-                margin-top: 0 !important;
+            ul {
+                margin-bottom: 1.3em !important;
             }
             
             h1 {
                 font-size: 28px !important;
-                line-height: 1.3 !important;
                 padding: 0 4px !important;
-                margin-bottom: 8px !important;
-            }
-            
-            .subtitle {
-                padding: 0 4px !important;
-                font-size: 16px !important;
-                line-height: 1.5 !important;
-                margin-bottom: 1.5em !important;
             }
             
             h2 {
                 font-size: 24px !important;
-                line-height: 1.3 !important;
                 margin-bottom: 20px !important;
                 padding: 0 4px 8px 4px !important;
             }
             
-            .page-number {
-                padding: 20px 4px 0 !important;
-                margin-top: 24px !important;
+            .subtitle {
+                font-size: 16px !important;
+                padding: 0 4px !important;
+                margin-bottom: 1.3em !important;
+            }
+            
+            .print-button {
+                padding: 14px 30px;
+                font-size: 18px;
+            }
+            
+            .print-icon {
+                font-size: 20px;
+            }
+            
+            .print-text {
+                font-size: 18px;
             }
         }
         
-        /* Для очень маленьких экранов */
+        /* =========================
+        ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ
+        ========================= */
         @media (max-width: 375px) {
             .container {
                 margin: 2px !important;
@@ -271,7 +479,7 @@
             }
             
             .section {
-                padding: 12px 4px !important;
+                padding: 16px 8px !important;
                 margin-left: -4px !important;
                 margin-right: -4px !important;
                 width: calc(100% + 8px) !important;
@@ -289,13 +497,9 @@
                 font-size: 16px !important;
             }
             
-            ul {
-                padding-left: 16px !important;
-            }
-            
-            /* Сохраняем большие отступы и на очень маленьких экранах */
-            p, .definition-block {
-                margin-bottom: 1.5em !important;
+            .print-button {
+                padding: 12px 24px;
+                font-size: 16px;
             }
         }
     </style>
@@ -303,13 +507,13 @@
 <body>
     <div class="container">
         <header>
-    <h1>Информация для пациентов о туберкулезе</h1>
-    <p class="subtitle">
-        Текст разработан Российским Обществом Фтизиатров,<br>
-        Национальной ассоциацией некоммерческих организаций фтизиатров «Ассоциация фтизиатров»<br>
-        Размещен в клинических рекомендациях по лечению туберкулеза, 2025
-    </p>
-</header>
+            <h1>Информация для пациентов о туберкулезе</h1>
+            <p class="subtitle">
+                Текст разработан Российским Обществом Фтизиатров,<br>
+                Национальной ассоциацией некоммерческих организаций фтизиатров «Ассоциация фтизиатров»<br>
+                Размещен в клинических рекомендациях по лечению туберкулеза, 2025
+            </p>
+        </header>
 
         <!-- Краткое определение заболевания -->
         <section class="section info-block">
@@ -394,7 +598,23 @@
             <p>С момента установления диагноза туберкулеза пациент берется на диспансерный учет. Кроме того, диспансерному наблюдению подлежат здоровые люди с наиболее высоким риском развития заболевания: лица, контактирующие с пациентом с активным туберкулезом, особенно с бактериовыделением; лица с положительными результатами внутрикожной пробы с туберкулезным аллергеном (аллерген туберкулезный рекомбинантный в стандартном разведении). Диспансерное наблюдение подразумевает системное проведение профилактических, диагностических, лечебных и реабилитационных мероприятий и осуществляется врачами-фтизиатрами.</p>
         </section>
 
+        <!-- КНОПКА ПЕЧАТИ -->
+        <div class="print-label">📄 Распечатайте эту информацию для пациентов</div>
+        <div class="print-container">
+            <button class="print-button" onclick="window.print()">
+                <span class="print-icon">🖨️</span>
+                <span class="print-text">Печать</span>
+            </button>
+        </div>
+
         <div class="page-number">2026</div>
     </div>
+
+    <script>
+        // Небольшое улучшение: если кнопка не сработает по какой-то причине
+        document.querySelector('.print-button').addEventListener('click', function(e) {
+            window.print();
+        });
+    </script>
 </body>
 </html>
