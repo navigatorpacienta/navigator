@@ -171,6 +171,12 @@
         
         .drug-btn i {
             font-size: 1.3rem;
+            color: var(--primary-color);  /* ← СИНИЕ ИКОНКИ В КНОПКАХ */
+        }
+        
+        .drug-btn:hover i,
+        .drug-btn.active i {
+            color: white;  /* ← БЕЛЫЕ ПРИ НАВЕДЕНИИ */
         }
         
         .drug-info-container {
@@ -431,7 +437,7 @@
             }
         }
         
-                .drug-info-container:empty {
+        .drug-info-container:empty {
             display: none;
         }
         
