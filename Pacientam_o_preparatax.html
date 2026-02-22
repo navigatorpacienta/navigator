@@ -171,12 +171,12 @@
         
         .drug-btn i {
             font-size: 1.3rem;
-            color: var(--primary-color);  /* ← СИНИЕ ИКОНКИ В КНОПКАХ */
+            color: var(--primary-color);
         }
         
         .drug-btn:hover i,
         .drug-btn.active i {
-            color: white;  /* ← БЕЛЫЕ ПРИ НАВЕДЕНИИ */
+            color: white;
         }
         
         .drug-info-container {
@@ -209,16 +209,9 @@
             gap: 12px;
         }
         
+        /* ПОЛНОСТЬЮ УБИРАЕМ КРУГЛЫЕ ИКОНКИ */
         .drug-icon {
-            background-color: var(--primary-color);
-            color: white;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
+            display: none;
         }
         
         .drug-text-content {
@@ -389,6 +382,7 @@
                 width: 50px;
                 height: 50px;
                 font-size: 1.4rem;
+                display: none;  /* И ЗДЕСЬ ТОЖЕ ПРЯЧЕМ */
             }
             
             .drug-text-content {
@@ -450,6 +444,7 @@
                 width: 45px;
                 height: 45px;
                 font-size: 1.3rem;
+                display: none;  /* И ЗДЕСЬ */
             }
             
             .text-paragraph {
