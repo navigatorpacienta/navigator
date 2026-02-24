@@ -560,6 +560,17 @@
     }
 
     </style>
+    <style>
+        @media (min-width: 1024px) {
+            .contact-buttons a img {
+                width: 80px !important;
+                height: 80px !important;
+            }
+            .contact-buttons {
+                gap: 35px !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -574,28 +585,29 @@
         <p>Помогает понять диагностику и лечение, следить за их этапами и выполнять всё правильно.</p>
     </header>
 
-    <!-- КОНТАКТНЫЙ БЛОК - ТОЛЬКО ЗНАЧКИ -->
+   <!-- КОНТАКТНЫЙ БЛОК - ТОЛЬКО ЗНАЧКИ (АДАПТИВНЫЕ) -->
 <div class="contact-block">
     <div class="contact-text">По вопросам доступности или качества оказания медицинской помощи обращайтесь напрямую к заведующему филиалом. Не стесняйтесь!<br><span class="contact-text-red">Это решит вопрос здесь и сейчас и поможет нам стать лучше.</span></div>
     <div class="contact-name">Лукаш Игорь Александрович</div>
     <div class="contact-position">Заведующий филиалом</div>
-    <div class="contact-buttons" style="display: flex; justify-content: center; gap: 20px; margin-top: 25px;">
+    <div class="contact-buttons" style="display: flex; justify-content: center; gap: 25px; margin-top: 30px; flex-wrap: wrap;">
         <!-- Телефон -->
         <a href="tel:+79153861585" style="display: inline-block;">
-            <img src="z.png" alt="Позвонить" width="48" height="48" style="border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <img src="z.png" alt="Позвонить" style="width: 64px; height: 64px; border-radius: 50%; box-shadow: 0 6px 16px rgba(0,0,0,0.2); transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         </a>
         
         <!-- Telegram -->
         <a href="tg://resolve?domain=Megaluk" style="display: inline-block;">
-            <img src="t.png" alt="Telegram" width="48" height="48" style="border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <img src="t.png" alt="Telegram" style="width: 64px; height: 64px; border-radius: 50%; box-shadow: 0 6px 16px rgba(0,0,0,0.2); transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         </a>
         
-        <!-- MAX (большими латинскими) -->
+        <!-- MAX -->
         <a href="https://max.ru/u/f9LHodD0cOKwsK0ZdY8UeKromigzANI19JojbpM-LWvclw4LHqz9IKoAKcI" style="display: inline-block;" target="_blank">
-            <img src="m.png" alt="MAX" width="48" height="48" style="border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <img src="m.png" alt="MAX" style="width: 64px; height: 64px; border-radius: 50%; box-shadow: 0 6px 16px rgba(0,0,0,0.2); transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         </a>
     </div>
 </div>
+
 
     <div class="grid" id="cardGrid">
         <!-- Карточки с выпадающими списками (expandable) - оставляем как есть -->
