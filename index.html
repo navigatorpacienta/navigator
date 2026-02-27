@@ -609,16 +609,17 @@
 </div>
 
     <div class="grid" id="cardGrid">
-        <!-- Карточки с выпадающими списками (expandable) - оставляем как есть -->
+        <!-- ========== КАРТОЧКА 1: О нашем учреждении ========== -->
         <div class="card expandable" data-preview="about">
             <div class="card-header"><div class="card-icon">🏥</div><div class="card-title">О нашем учреждении</div></div>
         </div>
         
-        <!-- Эти карточки теперь открывают сразу второе модальное окно (без первого) -->
+        <!-- ========== КАРТОЧКА 2: Как мы улучшаем качество ========== -->
         <div class="card card-link" data-direct="quality" style="cursor:pointer;">
             <div class="card-header"><div class="card-icon">🤝</div><div class="card-title">Как мы улучшаем качество нашей работы вместе с вами</div></div>
         </div>
         
+        <!-- ========== КАРТОЧКА 3: Общая информация о туберкулезе ========== -->
         <div class="card card-link" data-direct="general_info">
             <div class="card-header">
                 <div class="card-icon">📘</div>
@@ -626,23 +627,27 @@
             </div>
         </div>
         
+        <!-- ========== КАРТОЧКА 4: Диагностика ========== -->
         <div class="card expandable" data-preview="diagnostics">
             <div class="card-header"><div class="card-icon">🔬</div><div class="card-title">Диагностика</div></div>
         </div>
         
+        <!-- ========== КАРТОЧКА 5: Консервативное лечение ========== -->
         <div class="card expandable" data-preview="treatment">
             <div class="card-header"><div class="card-icon">💊</div><div class="card-title">Консервативное лечение</div></div>
         </div>
         
+        <!-- ========== КАРТОЧКА 6: Хирургическое лечение ========== -->
         <div class="card card-link" data-direct="surgery" style="cursor:pointer;">
             <div class="card-header"><div class="card-icon">⚕️</div><div class="card-title">Хирургическое лечение</div></div>
         </div>
         
+        <!-- ========== КАРТОЧКА 7: Профилактика ========== -->
         <div class="card expandable" data-preview="prevention">
             <div class="card-header"><div class="card-icon">🛡️</div><div class="card-title">Профилактика и раннее выявление туберкулёза</div></div>
         </div>
 
-        <!-- Карточка клинических рекомендаций (перед "Ответы на частые вопросы") -->
+        <!-- ========== КАРТОЧКА 8: Клинические рекомендации ========== -->
         <div class="card card-link" data-direct="clinical_guidelines" style="cursor:pointer;">
             <div class="card-header">
                 <div class="card-icon">📋</div>
@@ -650,33 +655,35 @@
             </div>
         </div>
         
+        <!-- ========== КАРТОЧКА 9: Ответы на частые вопросы ========== -->
         <a href="faq.html" class="card card-link"><div class="card-header"><div class="card-icon">❓</div><div class="card-title">Ответы на частые вопросы</div></div></a>
-        <!-- Карточка нормативная база. -->
-                <div class="card expandable" onclick="toggleCard(this)">
+        
+        <!-- ========== КАРТОЧКА 10: Нормативная база ========== -->
+        <div class="card expandable" onclick="toggleCard(this)">
             <div class="card-header"><div class="card-icon">⚖️</div><div class="card-title">Нормативная база</div></div>
             <div class="link-list">
-                <!-- Московская областная программа госгарантий -->
+                <!-- Документ 1: Московская областная программа госгарантий -->
                 <div class="link-item dropdown-toggle" onclick="toggleDropdown('doc1', event)">Московская областная программа госгарантий</div>
                 <div class="dropdown-content" id="dropdown-doc1">
                     <a href="https://mosreg.ru/download/document/1315416" class="dropdown-item" target="_blank"><span class="dropdown-item-icon">📄</span> Ссылка на официальный документ</a>
                     <a href="fz323.html" class="dropdown-item"><span class="dropdown-item-icon">💡</span> Разъяснения простыми словами</a>
                 </div>
                 
-                <!-- Программа госгарантий РФ -->
+                <!-- Документ 2: Программа госгарантий РФ -->
                 <div class="link-item dropdown-toggle" onclick="toggleDropdown('doc2', event)">Программа госгарантий РФ</div>
                 <div class="dropdown-content" id="dropdown-doc2">
                     <a href="http://actual.pravo.gov.ru/content/content.html#pnum=0001202512300036" class="dropdown-item" target="_blank"><span class="dropdown-item-icon">📄</span> Ссылка на официальный документ</a>
                     <a href="fz323.html" class="dropdown-item"><span class="dropdown-item-icon">💡</span> Разъяснения простыми словами</a>
                 </div>
                 
-                <!-- ФЗ-323 "Об основах охраны здоровья" -->
+                <!-- Документ 3: ФЗ-323 "Об основах охраны здоровья" -->
                 <div class="link-item dropdown-toggle" onclick="toggleDropdown('doc3', event)">ФЗ-323 "Об основах охраны здоровья"</div>
                 <div class="dropdown-content" id="dropdown-doc3">
                     <a href="fz323zakon.html" class="dropdown-item"><span class="dropdown-item-icon">📄</span> Основной документ</a>
                     <a href="fz323.html" class="dropdown-item"><span class="dropdown-item-icon">💡</span> Разъяснения простыми словами</a>
                 </div>
                 
-                <!-- ФЗ-59 "О порядке рассмотрения обращений граждан" (НОВЫЙ, ПОСЛЕДНИЙ) -->
+                <!-- Документ 4: ФЗ-59 "О порядке рассмотрения обращений граждан" (НОВЫЙ) -->
                 <div class="link-item dropdown-toggle" onclick="toggleDropdown('doc4', event)">ФЗ-59 "О порядке рассмотрения обращений граждан"</div>
                 <div class="dropdown-content" id="dropdown-doc4">
                     <a href="documents/fz_02.05.2006_59-obrachenia.pdf" class="dropdown-item" target="_blank"><span class="dropdown-item-icon">📄</span> Ссылка на документ</a>
@@ -685,11 +692,12 @@
             </div>
         </div>
         
+        <!-- ========== КАРТОЧКА 11: Обратная связь ========== -->
         <div class="card expandable" data-preview="feedback">
             <div class="card-header"><div class="card-icon">💬</div><div class="card-title">Обратная связь</div></div>
         </div>
         
-        <!-- Карточка официального сайта с двумя модальными окнами -->
+        <!-- ========== КАРТОЧКА 12: Официальный сайт ========== -->
         <div class="card card-link" data-official="true" style="cursor:pointer;">
             <div class="card-header"><div class="card-icon">🌐</div><div class="card-title">Официальный сайт</div></div>
         </div>
