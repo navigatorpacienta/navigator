@@ -658,154 +658,46 @@
         <!-- ========== КАРТОЧКА 9: Ответы на частые вопросы ========== -->
         <a href="faq.html" class="card card-link"><div class="card-header"><div class="card-icon">❓</div><div class="card-title">Ответы на частые вопросы</div></div></a>
         
-                                <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Трудовой кодекс РФ ст.213: оплата медосмотров</title>
-    <style>
-        @font-face {
-            font-family: 'Inter';
-            src: url('fonts/inter-cyrillic-400-normal.woff2') format('woff2');
-            font-weight: 400;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Inter';
-            src: url('fonts/inter-cyrillic-500-normal.woff2') format('woff2');
-            font-weight: 500;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Inter';
-            src: url('fonts/inter-cyrillic-600-normal.woff2') format('woff2');
-            font-weight: 600;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Inter';
-            src: url('fonts/inter-cyrillic-700-normal.woff2') format('woff2');
-            font-weight: 700;
-            font-display: swap;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-        body {
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.5;
-            padding: 20px;
-        }
-        .container {
-            background-color: white;
-            padding: 25px;
-            max-width: 900px;
-            margin: 0 auto;
-            border-left: 8px solid #2c3e6e;
-            border-right: 8px solid #2c3e6e;
-            box-shadow: 0 0 20px rgba(0,0,0,0.08);
-        }
-        header {
-            text-align: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #2c3e6e;
-        }
-        h1 {
-            color: #2c3e6e;
-            font-size: 1.8em;
-            margin-bottom: 10px;
-        }
-        .section {
-            margin-bottom: 20px;
-            padding: 20px;
-            background-color: #f8f9fc;
-            border-left: 4px solid #5a6fb8;
-        }
-        h2 {
-            color: #2c3e6e;
-            font-size: 1.3em;
-            margin-bottom: 12px;
-            border-bottom: 1px dashed #b8c5e0;
-            padding-bottom: 5px;
-        }
-        p {
-            margin-bottom: 15px;
-            font-size: 1.1em;
-        }
-        ul {
-            padding-left: 25px;
-            margin-top: 10px;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        .important {
-            border-left-color: #c43e3e;
-            background-color: #fef2f2;
-        }
-        .highlight {
-            background-color: #fffacd;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-weight: 500;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Статья 213 Трудового кодекса РФ</h1>
-            <p>Оплата медицинских осмотров и справок</p>
-        </header>
-        
-        <div class="section important">
-            <h2>Главное</h2>
-            <p><strong>Все обязательные медицинские осмотры (предварительные и периодические) оплачивает работодатель.</strong> Это прямо установлено законом.</p>
+        <!-- ========== КАРТОЧКА 10: Нормативная база ========== -->
+        <div class="card expandable" onclick="toggleCard(this)">
+            <div class="card-header"><div class="card-icon">⚖️</div><div class="card-title">Нормативная база</div></div>
+            <div class="link-list">
+                <!-- Документ 1: Московская областная программа госгарантий -->
+                <div class="link-item dropdown-toggle" onclick="toggleDropdown('doc1', event)">Московская областная программа госгарантий</div>
+                <div class="dropdown-content" id="dropdown-doc1">
+                    <a href="https://mosreg.ru/download/document/1315416" class="dropdown-item" target="_blank"><span class="dropdown-item-icon">📄</span> Ссылка на официальный документ</a>
+                    <a href="fz323.html" class="dropdown-item"><span class="dropdown-item-icon">💡</span> Разъяснения простыми словами</a>
+                </div>
+                
+                <!-- Документ 2: Программа госгарантий РФ -->
+                <div class="link-item dropdown-toggle" onclick="toggleDropdown('doc2', event)">Программа госгарантий РФ</div>
+                <div class="dropdown-content" id="dropdown-doc2">
+                    <a href="http://actual.pravo.gov.ru/content/content.html#pnum=0001202512300036" class="dropdown-item" target="_blank"><span class="dropdown-item-icon">📄</span> Ссылка на официальный документ</a>
+                    <a href="fz323.html" class="dropdown-item"><span class="dropdown-item-icon">💡</span> Разъяснения простыми словами</a>
+                </div>
+                
+                <!-- Документ 3: ФЗ-323 "Об основах охраны здоровья" -->
+                <div class="link-item dropdown-toggle" onclick="toggleDropdown('doc3', event)">ФЗ-323 "Об основах охраны здоровья"</div>
+                <div class="dropdown-content" id="dropdown-doc3">
+                    <a href="fz323zakon.html" class="dropdown-item"><span class="dropdown-item-icon">📄</span> Основной документ</a>
+                    <a href="fz323.html" class="dropdown-item"><span class="dropdown-item-icon">💡</span> Разъяснения простыми словами</a>
+                </div>
+                
+                <!-- Документ 4: ФЗ-59 "О порядке рассмотрения обращений граждан" -->
+                <div class="link-item dropdown-toggle" onclick="toggleDropdown('doc4', event)">ФЗ-59 "О порядке рассмотрения обращений граждан"</div>
+                <div class="dropdown-content" id="dropdown-doc4">
+                    <a href="documents/fz№59.pdf" class="dropdown-item" target="_blank"><span class="dropdown-item-icon">📄</span> Ссылка на документ</a>
+                    <a href="fz59.html" class="dropdown-item"><span class="dropdown-item-icon">💡</span> Разъяснения простыми словами</a>
+                </div>
+                
+                <!-- Документ 5: Трудовой кодекс РФ (ст. 213) -->
+                <div class="link-item dropdown-toggle" onclick="toggleDropdown('doc5', event)">Трудовой кодекс РФ (ст. 213) — оплата медосмотров</div>
+                <div class="dropdown-content" id="dropdown-doc5">
+                    <a href="documents/trudcodeks.pdf" class="dropdown-item" target="_blank"><span class="dropdown-item-icon">📄</span> Ссылка на документ</a>
+                    <a href="#" class="dropdown-item"><span class="dropdown-item-icon">💡</span> Разъяснения простыми словами</a>
+                </div>
+            </div>
         </div>
-        
-        <div class="section">
-            <h2>Что говорит закон</h2>
-            <p>Согласно статье 213 ТК РФ, работники, занятые на определенных видах деятельности (в том числе в сфере торговли, общепита, медицины, образования и др.), проходят обязательные медосмотры <strong>за счет средств работодателя</strong>.</p>
-            <p>Справка об отсутствии учета в противотуберкулезном диспансере — это часть такого медосмотра.</p>
-        </div>
-        
-        <div class="section">
-            <h2>Почему в диспансере услуга платная</h2>
-            <ul>
-                <li>Выдача таких справок <strong>не входит в программу ОМС</strong> (не является страховым случаем).</li>
-                <li>Медицинская организация не имеет прямого договора с вашим работодателем.</li>
-                <li>Поэтому услуга оказывается вам как физическому лицу — платно.</li>
-            </ul>
-        </div>
-        
-        <div class="section important">
-            <h2>Что делать</h2>
-            <ol>
-                <li>Оплатите справку самостоятельно.</li>
-                <li>Сохраните чек и договор.</li>
-                <li>Предоставьте документы в бухгалтерию вашего работодателя.</li>
-                <li>Работодатель <strong>обязан компенсировать</strong> вам эти расходы (ст. 213 ТК РФ).</li>
-            </ol>
-            <p class="highlight">Все вопросы по возмещению решайте напрямую с работодателем.</p>
-        </div>
-        
-        <div class="section">
-            <h2>Коротко</h2>
-            <ul>
-                <li><strong>Вы платите сейчас</strong> — потому что так устроена система.</li>
-                <li><strong>Работодатель возвращает деньги</strong> — потому что так требует закон.</li>
-            </ul>
-        </div>
-    </div>
-</body>
-</html>
         
         <!-- ========== КАРТОЧКА 11: Обратная связь ========== -->
         <div class="card expandable" data-preview="feedback">
