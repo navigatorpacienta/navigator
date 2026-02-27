@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Федеральный закон №59-ФЗ: как правильно обращаться в госорганы</title>
+    <style>
+        /* =========================
+   ЛОКАЛЬНЫЕ ШРИФТЫ (как в index)
+========================= */
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/inter-cyrillic-400-normal.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/inter-cyrillic-500-normal.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/inter-cyrillic-600-normal.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/inter-cyrillic-700-normal.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Georgia', 'Times New Roman', serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.5;
+            padding: 0;
+            max-width: 100%;
+            margin: 0;
+            border: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f5f7fa"/><path d="M20,20 L80,80 M80,20 L20,80" stroke="%23d1d9e6" stroke-width="1"/></svg>');
+        }
+        .container {
+            background-color: white;
+            padding: 15px;
+            box-shadow: none;
+            border-radius: 0;
+            width: 100%;
+            max-width: 100%;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2c3e6e;
+        }
+        h1 {
+            color: #2c3e6e;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+            line-height: 1.3;
+        }
+        .subtitle {
+            color: #555;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fc;
+            border-left: 4px solid #4a5fa8;
+            border-radius: 0;
+            width: 100%;
+        }
+        h2 {
+            color: #2c3e6e;
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px dashed #b8c5e0;
+        }
+        p, ul, ol {
+            font-size: 0.95em;
+            color: #333;
+            line-height: 1.4;
+        }
+        ul, ol {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+        li {
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+        ul ul, ul ol, ol ul, ol ol {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .intro {
+            border-left-color: #3a4d8a;
+            background-color: #f0f3fa;
+        }
+        .rights {
+            border-left-color: #5a6fb8;
+            background-color: #f2f5fc;
+        }
+        .howto {
+            border-left-color: #6d81c9;
+            background-color: #eef1f9;
+        }
+        .timing {
+            border-left-color: #1e2a5a;
+            background-color: #e6eaf5;
+        }
+        .reception {
+            border-left-color: #8a4caf;
+            background-color: #f5f0f9;
+        }
+        .important {
+            border-left-color: #c43e3e;
+            background-color: #fef2f2;
+        }
+        strong {
+            color: #2c3e6e;
+        }
+        .highlight {
+            background-color: #fffacd;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+        .page-number {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.85em;
+            color: #777;
+            border-top: 1px solid #ddd;
+            padding-top: 12px;
+        }
+
+        /* Медиа-запросы для планшетов */
+        @media (min-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            .section {
+                padding: 20px;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            p, ul, ol {
+                font-size: 1em;
+            }
+        }
+
+        /* Медиа-запросы для десктопов */
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+                border-left: 8px solid #2c3e6e;
+                border-right: 8px solid #2c3e6e;
+            }
+            .container {
+                padding: 40px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+                border-radius: 2px;
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+            h1 {
+                font-size: 2.4em;
+                margin-bottom: 15px;
+                line-height: 1.2;
+            }
+            .subtitle {
+                font-size: 1.1em;
+            }
+            .section {
+                padding: 25px;
+                margin-bottom: 35px;
+                border-left-width: 5px;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            p, ul, ol {
+                font-size: 1.1em;
+                line-height: 1.6;
+            }
+            .page-number {
+                margin-top: 40px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Для очень маленьких экранов */
+        @media (max-width: 360px) {
+            .container {
+                padding: 12px;
+            }
+            header {
+                padding-bottom: 12px;
+                margin-bottom: 20px;
+            }
+            h1 {
+                font-size: 1.4em;
+            }
+            .section {
+                padding: 12px 10px;
+            }
+            ul, ol {
+                padding-left: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Федеральный закон №59-ФЗ: как правильно обращаться в государственные органы</h1>
+            <p class="subtitle">Простой разбор закона «О порядке рассмотрения обращений граждан Российской Федерации»</p>
+        </header>
+
+        <section class="section intro">
+            <h2>Что это за закон?</h2>
+            <p><strong>Федеральный закон от 02.05.2006 № 59-ФЗ</strong> — это базовый закон, который регулирует, как именно граждане могут обращаться в государственные органы, органы местного самоуправления, государственные и муниципальные учреждения, и как эти органы обязаны отвечать.</p>
+            <p>Проще говоря, это <strong>инструкция для обеих сторон</strong>: для вас — как правильно написать или подать обращение, чтобы оно было рассмотрено; для чиновников — в какие сроки и как они обязаны вам ответить.</p>
+        </section>
+
+        <section class="section rights">
+            <h2>Какие виды обращений бывают?</h2>
+            <p>Закон выделяет три вида обращений (статья 4):</p>
+            <ul>
+                <li><strong>Предложение</strong> — рекомендация по улучшению работы, совершенствованию законов, развитию общественных отношений. Например, вы предлагаете изменить график работы регистратуры.</li>
+                <li><strong>Заявление</strong> — просьба о содействии в реализации ваших прав или сообщение о недостатках в работе. Например, вы просите предоставить вам льготные лекарства.</li>
+                <li><strong>Жалоба</strong> — просьба о восстановлении или защите ваших нарушенных прав. Например, вы жалуетесь на отказ в госпитализации.</li>
+            </ul>
+        </section>
+
+        <section class="section howto">
+            <h2>Как правильно написать обращение?</h2>
+            <p>Статья 7 закона устанавливает обязательные требования:</p>
+            <ul>
+                <li><strong>Куда:</strong> наименование органа или ФИО должностного лица.</li>
+                <li><strong>От кого:</strong> ваши фамилия, имя, отчество (последнее — при наличии).</li>
+                <li><strong>Обратный адрес:</strong> почтовый адрес или email для ответа.</li>
+                <li><strong>Суть:</strong> четко изложите, о чем вы просите или на что жалуетесь.</li>
+                <li><strong>Подпись и дата:</strong> личная подпись в письменном обращении.</li>
+            </ul>
+            <p><span class="highlight">Важно:</span> Если не указать фамилию и адрес, ответ на обращение не дается (ст. 11).</p>
+        </section>
+
+        <section class="section rights">
+            <h2>Ваши права при рассмотрении обращения (ст. 5)</h2>
+            <ul>
+                <li>Представлять дополнительные документы и материалы.</li>
+                <li><strong>Знакомиться с документами и материалами</strong>, касающимися рассмотрения вашего обращения (если это не затрагивает чужие права и не содержит гостайну).</li>
+                <li>Получать письменный ответ по существу.</li>
+                <li>Обращаться с жалобой на принятое решение или на бездействие — в административном или судебном порядке.</li>
+                <li>Обращаться с заявлением о прекращении рассмотрения обращения.</li>
+            </ul>
+        </section>
+
+        <section class="section important">
+            <h2>Гарантии безопасности (ст. 6)</h2>
+            <p><strong>Запрещается преследование гражданина</strong> в связи с его обращением с критикой деятельности органов или должностных лиц.</p>
+            <p><strong>Не допускается разглашение сведений</strong>, содержащихся в обращении, а также сведений о частной жизни гражданина без его согласия.</p>
+        </section>
+
+        <section class="section timing">
+            <h2>Сроки рассмотрения (ст. 12)</h2>
+            <ul>
+                <li><strong>Регистрация:</strong> в течение 3 дней с момента поступления.</li>
+                <li><strong>Рассмотрение:</strong> 30 дней со дня регистрации.</li>
+                <li><strong>Продление срока:</strong> в исключительных случаях — не более чем на 30 дней, с обязательным уведомлением вас.</li>
+            </ul>
+        </section>
+
+        <section class="section reception">
+            <h2>Личный прием граждан (ст. 13)</h2>
+            <ul>
+                <li>Прием проводят руководители и уполномоченные лица.</li>
+                <li>При себе нужно иметь документ, удостоверяющий личность.</li>
+                <li>Содержание устного обращения заносится в карточку личного приема.</li>
+                <li>Если факты очевидны и не требуют проверки, ответ может быть дан устно.</li>
+                <li>Письменное обращение, принятое на личном приеме, регистрируется и рассматривается в общем порядке.</li>
+            </ul>
+        </section>
+
+        <section class="section howto">
+            <h2>Особые случаи (ст. 11)</h2>
+            <ul>
+                <li><strong>Анонимные обращения</strong> без обратного адреса — не рассматриваются (кроме сообщений о преступлении).</li>
+                <li><strong>Неподдающиеся прочтению</strong> — не рассматриваются, вам сообщают об этом в течение 7 дней (если адрес можно прочесть).</li>
+                <li><strong>Оскорбления и угрозы</strong> — могут оставить без ответа с уведомлением о недопустимости злоупотребления правом.</li>
+                <li><strong>Повторные обращения</strong> без новых доводов — могут прекратить переписку.</li>
+            </ul>
+        </section>
+
+        <section class="section conclusion">
+            <h2>Куда жаловаться, если не отвечают?</h2>
+            <p>Если ваше обращение проигнорировали, нарушили сроки или ответили не по существу, вы имеете право (ст. 5 п. 4):</p>
+            <ul>
+                <li>Подать жалобу вышестоящему должностному лицу.</li>
+                <li>Обратиться в прокуратуру.</li>
+                <li>Обжаловать бездействие в суде.</li>
+            </ul>
+            <p>Кроме того, закон предусматривает <strong>право на возмещение убытков и компенсацию морального вреда</strong>, причиненных незаконными действиями должностных лиц (ст. 16).</p>
+        </section>
+
+        <section class="section important">
+            <h2>Коротко: что нужно запомнить</h2>
+            <ul>
+                <li><strong>Всегда указывайте свои данные и адрес для ответа.</strong></li>
+                <li><strong>Срок ответа — 30 дней.</strong> Отсчитывается от даты регистрации.</li>
+                <li><strong>Ответ должен быть по существу.</strong></li>
+                <li><strong>На личный прием — с паспортом.</strong></li>
+                <li><strong>Преследование за обращение — незаконно.</strong></li>
+            </ul>
+        </section>
+
+        <div class="page-number">Страница 1</div>
+    </div>
+</body>
+</html>
