@@ -7,72 +7,40 @@
     <title>Навигатор пациента | ГБУЗ МО МОКПТД филиал Клинский</title>
   
     <style>
-    /* ===== ШРИФТЫ ===== */
+        /* ===== ШРИФТЫ (локальные) ===== */
     @font-face {
-        font-family: 'Montserrat';
-        src: url('./fonts/montserrat-cyrillic-400.woff2') format('woff2');
+        font-family: 'Inter';
+        src: url('./fonts/inter-cyrillic-400-normal.woff2') format('woff2');
         font-weight: 400;
         font-style: normal;
         font-display: swap;
     }
     @font-face {
-        font-family: 'Montserrat';
-        src: url('./fonts/montserrat-cyrillic-500.woff2') format('woff2');
+        font-family: 'Inter';
+        src: url('./fonts/inter-cyrillic-500-normal.woff2') format('woff2');
         font-weight: 500;
         font-style: normal;
         font-display: swap;
     }
     @font-face {
-        font-family: 'Montserrat';
-        src: url('./fonts/montserrat-cyrillic-600.woff2') format('woff2');
+        font-family: 'Inter';
+        src: url('./fonts/inter-cyrillic-600-normal.woff2') format('woff2');
         font-weight: 600;
         font-style: normal;
         font-display: swap;
     }
     @font-face {
-        font-family: 'Montserrat';
-        src: url('./fonts/montserrat-cyrillic-700.woff2') format('woff2');
+        font-family: 'Inter';
+        src: url('./fonts/inter-cyrillic-700-normal.woff2') format('woff2');
         font-weight: 700;
         font-style: normal;
         font-display: swap;
     }
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('./fonts/montserrat-cyrillic-800.woff2') format('woff2');
-        font-weight: 800;
-        font-style: normal;
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: 'Roboto';
-        src: url('./fonts/Roboto-Regular.woff2') format('woff2');
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-    }
-    @font-face {
-        font-family: 'Roboto';
-        src: url('./fonts/Roboto-Medium.woff2') format('woff2');
-        font-weight: 500;
-        font-style: normal;
-        font-display: swap;
-    }
-    @font-face {
-        font-family: 'Roboto';
-        src: url('./fonts/Roboto-Bold.woff2') format('woff2');
-        font-weight: 700;
-        font-style: normal;
-        font-display: swap;
-    }
-    
-              /* ===== СОВРЕМЕННЫЙ РЕДИЗАЙН ===== */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     
     /* ===== ЦВЕТОВАЯ ПАЛИТРА - СВЕТЛЫЙ ЗЕЛЁНЫЙ ===== */
     :root {
         /* Светлая зелёная гамма */
-        --primary-deep: #2F855A;        /* Приглушённый зелёный (вместо тёмного) */
+        --primary-deep: #2F855A;        /* Приглушённый зелёный */
         --primary-soft: #48BB78;        /* Мягкий зелёный */
         --accent-emerald: #38A169;       /* Изумрудный */
         --accent-sage: #9AE6B4;          /* Мятный */
@@ -102,7 +70,7 @@
         min-height: 100vh;
     }
 
-    /* ===== ШАПКА ===== */
+    /* ===== СТЕКЛЯННЫЙ HEADER ===== */
     .header {
         position: relative;
         text-align: center;
