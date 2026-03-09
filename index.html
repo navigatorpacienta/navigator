@@ -66,21 +66,21 @@
         font-display: swap;
     }
     
-       /* ===== СОВРЕМЕННЫЙ РЕДИЗАЙН ===== */
+           /* ===== СОВРЕМЕННЫЙ РЕДИЗАЙН ===== */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     
     /* ===== НОВАЯ ЦВЕТОВАЯ ПАЛИТРА ===== */
     :root {
-        /* Глубокая, благородная палитра */
-        --primary-deep: #0A2647;        /* Глубокий индиго */
-        --primary-soft: #1B3B5C;        /* Мягкий синий */
+        /* Светлая, благородная палитра - БЕЗ ЧЕРНОТЫ */
+        --primary-deep: #365ABD;        /* Вернул нормальный синий из оригинала */
+        --primary-soft: #5F8DDA;        /* Мягкий синий */
         --accent-emerald: #2E6B6B;      /* Изумрудный */
         --accent-sage: #84A7A7;          /* Мятно-серый */
         --accent-warm: #C9A959;          /* Теплый золотой */
         
-        --bg-gradient-start: #F0F5FA;    /* Светлый для градиента */
+        --bg-gradient-start: #F0F5FA;
         --bg-gradient-end: #E6EDF5;
-        --surface-frost: rgba(255, 255, 255, 0.85);  /* Матовое стекло */
+        --surface-frost: rgba(255, 255, 255, 0.85);
         --surface-white: #FFFFFF;
         
         --text-dark: #1E2B3A;
@@ -111,12 +111,11 @@
         color: white;
         border-radius: 48px 48px 48px 48px;
         margin-bottom: 40px;
-        box-shadow: 0 25px 40px -15px rgba(10, 38, 71, 0.3);
+        box-shadow: 0 25px 40px -15px rgba(54, 90, 189, 0.3);
         overflow: hidden;
         isolation: isolate;
     }
     
-    /* Умный градиент поверх фона */
     .header::before {
         content: '';
         position: absolute;
@@ -127,10 +126,16 @@
         pointer-events: none;
     }
     
+    /* Ромашки - вернул на места, но сделал менее выраженными */
     .header img.romashka {
-        opacity: 0.1;
-        filter: brightness(0) invert(1);
+        position: absolute;
         z-index: 0;
+        opacity: 0.2; /* Было 0.5, теперь менее выраженные */
+        filter: brightness(0) invert(1);
+        user-select: none;
+        pointer-events: none;
+        width: auto;
+        height: auto;
     }
     
     .institution-name {
@@ -171,11 +176,11 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    /* ===== ЭЛЕГАНТНЫЙ КОНТАКТНЫЙ БЛОК ===== */
+    /* ===== КОНТАКТНЫЙ БЛОК - УВЕЛИЧИЛ ТЕКСТ ===== */
     .contact-block {
         background: var(--surface-frost);
         backdrop-filter: blur(10px);
-        padding: 40px;
+        padding: 45px 50px; /* Увеличил отступы */
         border-radius: 40px;
         margin: 40px 0;
         text-align: center;
@@ -184,12 +189,12 @@
     }
     
     .contact-text {
-        font-size: 1.3rem;
+        font-size: 1.6rem; /* БЫЛО 1.3rem - увеличил */
         color: var(--primary-deep);
-        margin-bottom: 25px;
-        line-height: 1.6;
+        margin-bottom: 30px;
+        line-height: 1.5;
         font-weight: 500;
-        max-width: 800px;
+        max-width: 900px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -198,27 +203,28 @@
         color: var(--accent-emerald);
         font-weight: 600;
         background: rgba(46, 107, 107, 0.1);
-        padding: 4px 12px;
-        border-radius: 40px;
+        padding: 8px 20px; /* Увеличил отступы */
+        border-radius: 50px;
         display: inline-block;
-        margin-top: 10px;
+        margin-top: 15px;
+        font-size: 1.5rem; /* Сделал крупнее */
     }
     
     .contact-name {
         font-family: 'Inter', sans-serif;
-        font-size: 2rem;
+        font-size: 2.2rem; /* Увеличил */
         color: var(--primary-deep);
         font-weight: 700;
-        margin: 20px 0 8px 0;
+        margin: 25px 0 10px 0;
         letter-spacing: -0.02em;
     }
     
     .contact-position {
         font-family: 'Inter', sans-serif;
-        font-size: 1.2rem;
+        font-size: 1.3rem; /* Увеличил */
         color: var(--accent-emerald);
         font-weight: 500;
-        margin: 0 0 30px 0;
+        margin: 0 0 35px 0;
         text-transform: uppercase;
         letter-spacing: 1px;
     }
@@ -228,7 +234,7 @@
         justify-content: center;
         gap: 30px;
         flex-wrap: wrap;
-        margin-top: 30px;
+        margin-top: 35px;
     }
     
     .contact-buttons a {
@@ -240,355 +246,11 @@
     }
     
     .contact-buttons a img {
-        box-shadow: 0 15px 30px -10px rgba(10, 38, 71, 0.3);
+        width: 80px; /* Увеличил с 64px */
+        height: 80px;
+        box-shadow: 0 15px 30px -10px rgba(54, 90, 189, 0.3);
         border: 3px solid white;
         transition: all 0.3s ease;
-    }
-    
-    .contact-buttons a:hover img {
-        box-shadow: 0 20px 40px -10px var(--accent-emerald);
-    }
-
-    /* ===== СОВРЕМЕННАЯ СЕТКА КАРТОЧЕК ===== */
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-        gap: 25px;
-        margin: 50px 0;
-    }
-    
-    .card {
-        background: var(--surface-white);
-        border-radius: 32px;
-        padding: 28px;
-        box-shadow: var(--shadow-elegant);
-        border: 1px solid var(--border-subtle);
-        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
-        cursor: pointer;
-        text-decoration: none !important;
-        min-height: 160px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-        backdrop-filter: blur(5px);
-    }
-    
-    /* Элегантное свечение при наведении */
-    .card::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(145deg, rgba(46, 107, 107, 0.02), rgba(10, 38, 71, 0.02));
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        pointer-events: none;
-    }
-    
-    .card:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 30px 50px -20px rgba(10, 38, 71, 0.2);
-        border-color: rgba(46, 107, 107, 0.3);
-    }
-    
-    .card:hover::before {
-        opacity: 1;
-    }
-    
-    .card-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-        position: relative;
-        z-index: 2;
-    }
-    
-    .card-icon {
-        font-size: 2.8rem;
-        margin-right: 20px;
-        color: var(--accent-emerald);
-        background: rgba(46, 107, 107, 0.1);
-        width: 70px;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 24px;
-        transition: all 0.3s ease;
-    }
-    
-    .card:hover .card-icon {
-        background: var(--accent-emerald);
-        color: white;
-        transform: scale(1.05);
-    }
-    
-    .card-title {
-        font-size: 1.4rem;
-        color: var(--primary-deep);
-        font-weight: 600;
-        flex-grow: 1;
-        line-height: 1.4;
-        letter-spacing: -0.01em;
-    }
-    
-    /* Индикатор раскрытия */
-    .card.expandable .card-header::after {
-        content: '⋯';
-        color: var(--accent-emerald);
-        font-size: 1.8rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        margin-left: 15px;
-        line-height: 1;
-        opacity: 0.5;
-    }
-    
-    .card.expandable:hover .card-header::after {
-        opacity: 1;
-        transform: translateY(2px);
-    }
-    
-    .card.expandable.expanded .card-header::after { 
-        content: '⋯';
-        transform: rotate(90deg);
-        opacity: 1;
-    }
-    
-    .link-list {
-        list-style: none;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        margin-top: 10px;
-    }
-    
-    .card.expanded .link-list { 
-        max-height: 1000px; 
-    }
-    
-    .link-item {
-        display: block;
-        padding: 16px 20px;
-        margin-bottom: 10px;
-        background: var(--bg-gradient-end);
-        border-radius: 24px;
-        text-decoration: none;
-        color: var(--text-dark);
-        border: 1px solid transparent;
-        transition: all 0.2s ease;
-        font-size: 1rem;
-        font-weight: 500;
-        position: relative;
-        padding-left: 24px;
-    }
-    
-    .link-item::before {
-        content: '→';
-        position: absolute;
-        left: 8px;
-        color: var(--accent-emerald);
-        opacity: 0;
-        transition: all 0.2s ease;
-    }
-    
-    .link-item:hover {
-        background: white;
-        border-color: var(--accent-emerald);
-        padding-left: 40px;
-        color: var(--primary-deep);
-        box-shadow: 0 8px 16px -8px rgba(0,0,0,0.1);
-    }
-    
-    .link-item:hover::before {
-        opacity: 1;
-        left: 16px;
-    }
-    
-    /* ===== СТИЛЬНЫЕ МОДАЛЬНЫЕ ОКНА ===== */
-    .modal-preview {
-        display: none;
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-color: rgba(10, 38, 71, 0.2);
-        z-index: 2000;
-        align-items: center;
-        justify-content: center;
-        backdrop-filter: blur(12px);
-    }
-    
-    .modal-preview.active { display: flex; }
-    
-    .modal-preview__content {
-        background: var(--surface-frost);
-        backdrop-filter: blur(20px);
-        width: 92%;
-        max-width: 600px;
-        max-height: 80vh;
-        border-radius: 48px;
-        box-shadow: 0 40px 70px -20px rgba(10, 38, 71, 0.3);
-        padding: 35px 30px;
-        position: relative;
-        animation: modalFloat 0.3s ease;
-        overflow-y: auto;
-        border: 1px solid rgba(255, 255, 255, 0.6);
-    }
-    
-    @keyframes modalFloat {
-        from {
-            opacity: 0;
-            transform: translateY(20px) scale(0.95);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
-    
-    .modal-preview__close {
-        position: absolute;
-        top: 18px; right: 20px;
-        font-size: 32px;
-        line-height: 1;
-        cursor: pointer;
-        color: var(--text-medium);
-        background: rgba(255, 255, 255, 0.5);
-        border: none;
-        width: 48px; height: 48px;
-        border-radius: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10;
-        transition: all 0.2s ease;
-        backdrop-filter: blur(5px);
-    }
-    
-    .modal-preview__close:hover { 
-        background: var(--accent-emerald);
-        color: white;
-        transform: rotate(90deg);
-    }
-    
-    .section-item {
-        background: white;
-        border-radius: 30px;
-        padding: 22px 25px;
-        border: 1px solid var(--border-subtle);
-        cursor: pointer;
-        transition: all 0.2s;
-        font-size: 1.2rem;
-        font-weight: 500;
-        color: var(--primary-deep);
-        margin-bottom: 12px;
-        box-shadow: var(--shadow-sm);
-    }
-    
-    .section-item:hover {
-        background: var(--accent-emerald);
-        color: white;
-        transform: translateX(8px);
-        border-color: transparent;
-        box-shadow: 0 15px 30px -12px var(--accent-emerald);
-    }
-    
-    .preview-card {
-        background: white;
-        border-radius: 36px;
-        padding: 30px;
-        border: 1px solid var(--border-subtle);
-    }
-    
-    .preview-card__text {
-        font-size: 1.1rem;
-        color: var(--text-dark);
-        line-height: 1.7;
-        background: var(--bg-gradient-end);
-        padding: 25px;
-        border-radius: 28px;
-        border-left: 5px solid var(--accent-emerald);
-        margin-bottom: 30px;
-    }
-    
-    .preview-card__button {
-        display: inline-block;
-        margin: 0 auto;
-        background: var(--accent-emerald);
-        color: white;
-        font-weight: 600;
-        padding: 16px 40px;
-        border-radius: 40px;
-        text-decoration: none;
-        font-size: 1.1rem;
-        border: none;
-        transition: all 0.2s;
-        text-align: center;
-        letter-spacing: 0.5px;
-        box-shadow: 0 15px 25px -10px var(--accent-emerald);
-    }
-    
-    .preview-card__button:hover { 
-        background: var(--primary-deep);
-        transform: translateY(-2px);
-        box-shadow: 0 20px 30px -10px var(--primary-deep);
-    }
-    
-    /* ===== ИЗЯЩНЫЙ ФУТЕР ===== */
-    .footer {
-        text-align: center;
-        padding: 40px;
-        margin-top: 70px;
-        color: var(--text-medium);
-        border-top: 1px solid rgba(0,0,0,0.05);
-        font-size: 1rem;
-        position: relative;
-        background: rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(5px);
-        border-radius: 40px;
-    }
-    
-    .footer p {
-        margin: 5px 0;
-        font-weight: 400;
-        letter-spacing: 1px;
-    }
-    
-    /* ===== АДАПТИВНОСТЬ С ДУШОЙ ===== */
-    @media (max-width: 768px) {
-        body { padding: 20px 15px; }
-        
-        .header {
-            padding: 40px 20px;
-            border-radius: 32px;
-        }
-        
-        .header h1 { font-size: 2.8rem; }
-        
-        .header p {
-            font-size: 1.1rem;
-            padding: 15px 20px;
-            border-radius: 40px;
-        }
-        
-        .contact-block { padding: 30px 20px; }
-        .contact-name { font-size: 1.6rem; }
-        .contact-text { font-size: 1.1rem; }
-        
-        .card { padding: 22px; }
-        .card-icon {
-            width: 55px;
-            height: 55px;
-            font-size: 2rem;
-        }
-        .card-title { font-size: 1.2rem; }
-    }
-    
-    @media (max-width: 480px) {
-        .header h1 { font-size: 2.2rem; }
-        .contact-name { font-size: 1.4rem; }
-        .contact-buttons { gap: 15px; }
-        .contact-buttons a img { width: 55px; height: 55px; }
     }
     </style>
 </head>
