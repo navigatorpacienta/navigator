@@ -7,7 +7,7 @@
     <title>Навигатор пациента | ГБУЗ МО МОКПТД филиал Клинский</title>
   
     <style>
-        /* ===== ШРИФТЫ (локальные) ===== */
+            /* ===== ШРИФТЫ (локальные) ===== */
     @font-face {
         font-family: 'Inter';
         src: url('./fonts/inter-cyrillic-400-normal.woff2') format('woff2');
@@ -37,26 +37,26 @@
         font-display: swap;
     }
     
-    /* ===== ЦВЕТОВАЯ ПАЛИТРА - СВЕТЛЫЙ ЗЕЛЁНЫЙ ===== */
+    /* ===== ЦВЕТОВАЯ ПАЛИТРА - СЕРЬЁЗНЫЙ ЗЕЛЁНЫЙ ===== */
     :root {
-        /* Светлая зелёная гамма */
-        --primary-deep: #2F855A;        /* Приглушённый зелёный */
-        --primary-soft: #48BB78;        /* Мягкий зелёный */
-        --accent-emerald: #38A169;       /* Изумрудный */
-        --accent-sage: #9AE6B4;          /* Мятный */
-        --accent-warm: #F6AD55;          /* Теплый персиковый */
+        /* Благородные зелёные тона */
+        --primary-deep: #1E4A4A;        /* Глубокий изумрудный */
+        --primary-soft: #2C6E6E;        /* Спокойный зелёный */
+        --accent-emerald: #3D7E7E;       /* Благородный акцент */
+        --accent-sage: #8FBCBC;          /* Приглушённый мятный */
+        --accent-warm: #D4A15E;          /* Тёплый янтарный для контраста */
         
-        --bg-gradient-start: #F7FAFC;
-        --bg-gradient-end: #EDF2F7;
+        --bg-gradient-start: #F5F8FA;
+        --bg-gradient-end: #EAF0F5;
         --surface-frost: rgba(255, 255, 255, 0.9);
         --surface-white: #FFFFFF;
         
-        --text-dark: #1A202C;
-        --text-medium: #4A5568;
-        --text-light: #718096;
+        --text-dark: #1A2A33;
+        --text-medium: #425A63;
+        --text-light: #6F878F;
         
-        --border-subtle: rgba(0, 0, 0, 0.05);
-        --shadow-elegant: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+        --border-subtle: rgba(0, 0, 0, 0.06);
+        --shadow-elegant: 0 20px 40px -15px rgba(30, 74, 74, 0.2);
     }
     
     body {
@@ -79,7 +79,7 @@
         color: white;
         border-radius: 48px;
         margin-bottom: 40px;
-        box-shadow: 0 25px 40px -15px rgba(47, 133, 90, 0.3);
+        box-shadow: 0 25px 40px -15px rgba(30, 74, 74, 0.3);
         overflow: hidden;
         isolation: isolate;
     }
@@ -89,7 +89,7 @@
         position: absolute;
         inset: 0;
         background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 70%, rgba(246, 173, 85, 0.15) 0%, transparent 50%);
+                    radial-gradient(circle at 80% 70%, rgba(212, 161, 94, 0.15) 0%, transparent 50%);
         z-index: 1;
         pointer-events: none;
     }
@@ -168,7 +168,7 @@
     .contact-text-red {
         color: var(--primary-soft);
         font-weight: 600;
-        background: rgba(72, 187, 120, 0.1);
+        background: rgba(44, 110, 110, 0.1);
         padding: 8px 25px;
         border-radius: 60px;
         display: inline-block;
@@ -258,7 +258,7 @@
     .card-icon {
         font-size: 2.8rem;
         color: var(--primary-deep);
-        background: rgba(72, 187, 120, 0.1);
+        background: rgba(44, 110, 110, 0.1);
         width: 70px;
         height: 70px;
         display: flex;
@@ -391,7 +391,7 @@
     }
     
     .dropdown-item:hover {
-        background: rgba(72, 187, 120, 0.05);
+        background: rgba(44, 110, 110, 0.05);
         color: var(--primary-deep);
         padding-left: 28px;
     }
