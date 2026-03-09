@@ -66,14 +66,14 @@
         font-display: swap;
     }
     
-           /* ===== СОВРЕМЕННЫЙ РЕДИЗАЙН ===== */
+              /* ===== СОВРЕМЕННЫЙ РЕДИЗАЙН ===== */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     
     /* ===== НОВАЯ ЦВЕТОВАЯ ПАЛИТРА ===== */
     :root {
-        /* Светлая, благородная палитра - БЕЗ ЧЕРНОТЫ */
-        --primary-deep: #365ABD;        /* Вернул нормальный синий из оригинала */
-        --primary-soft: #5F8DDA;        /* Мягкий синий */
+        /* Зелёная гамма - вместо индиго */
+        --primary-deep: #1D5B5B;        /* Глубокий зелёный (из контактного блока) */
+        --primary-soft: #2E6B6B;        /* Мягкий зелёный (акцент) */
         --accent-emerald: #2E6B6B;      /* Изумрудный */
         --accent-sage: #84A7A7;          /* Мятно-серый */
         --accent-warm: #C9A959;          /* Теплый золотой */
@@ -111,7 +111,7 @@
         color: white;
         border-radius: 48px 48px 48px 48px;
         margin-bottom: 40px;
-        box-shadow: 0 25px 40px -15px rgba(54, 90, 189, 0.3);
+        box-shadow: 0 25px 40px -15px rgba(29, 91, 91, 0.3);
         overflow: hidden;
         isolation: isolate;
     }
@@ -126,16 +126,10 @@
         pointer-events: none;
     }
     
-    /* Ромашки - вернул на места, но сделал менее выраженными */
+    /* Ромашки - только opacity, без filter */
     .header img.romashka {
-        position: absolute;
+        opacity: 0.2; /* Едва заметные */
         z-index: 0;
-        opacity: 0.2; /* Было 0.5, теперь менее выраженные */
-        filter: brightness(0) invert(1);
-        user-select: none;
-        pointer-events: none;
-        width: auto;
-        height: auto;
     }
     
     .institution-name {
@@ -176,11 +170,11 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    /* ===== КОНТАКТНЫЙ БЛОК - УВЕЛИЧИЛ ТЕКСТ ===== */
+    /* ===== КОНТАКТНЫЙ БЛОК ===== */
     .contact-block {
         background: var(--surface-frost);
         backdrop-filter: blur(10px);
-        padding: 45px 50px; /* Увеличил отступы */
+        padding: 45px 50px;
         border-radius: 40px;
         margin: 40px 0;
         text-align: center;
@@ -189,7 +183,7 @@
     }
     
     .contact-text {
-        font-size: 1.6rem; /* БЫЛО 1.3rem - увеличил */
+        font-size: 1.6rem;
         color: var(--primary-deep);
         margin-bottom: 30px;
         line-height: 1.5;
@@ -200,19 +194,19 @@
     }
     
     .contact-text-red {
-        color: var(--accent-emerald);
+        color: var(--primary-deep);
         font-weight: 600;
         background: rgba(46, 107, 107, 0.1);
-        padding: 8px 20px; /* Увеличил отступы */
+        padding: 8px 20px;
         border-radius: 50px;
         display: inline-block;
         margin-top: 15px;
-        font-size: 1.5rem; /* Сделал крупнее */
+        font-size: 1.5rem;
     }
     
     .contact-name {
         font-family: 'Inter', sans-serif;
-        font-size: 2.2rem; /* Увеличил */
+        font-size: 2.2rem;
         color: var(--primary-deep);
         font-weight: 700;
         margin: 25px 0 10px 0;
@@ -221,8 +215,8 @@
     
     .contact-position {
         font-family: 'Inter', sans-serif;
-        font-size: 1.3rem; /* Увеличил */
-        color: var(--accent-emerald);
+        font-size: 1.3rem;
+        color: var(--primary-soft);
         font-weight: 500;
         margin: 0 0 35px 0;
         text-transform: uppercase;
@@ -246,11 +240,92 @@
     }
     
     .contact-buttons a img {
-        width: 80px; /* Увеличил с 64px */
+        width: 80px;
         height: 80px;
-        box-shadow: 0 15px 30px -10px rgba(54, 90, 189, 0.3);
+        box-shadow: 0 15px 30px -10px var(--primary-deep);
         border: 3px solid white;
         transition: all 0.3s ease;
+    }
+    
+    /* ===== СОВРЕМЕННАЯ СЕТКА КАРТОЧЕК ===== */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 25px;
+        margin: 50px 0;
+    }
+    
+    .card {
+        background: var(--surface-white);
+        border-radius: 32px;
+        padding: 28px;
+        box-shadow: var(--shadow-elegant);
+        border: 1px solid var(--border-subtle);
+        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+        cursor: pointer;
+        text-decoration: none !important;
+        min-height: 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Ховер - светлый зелёный, не тёмный */
+    .card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 30px 50px -20px var(--primary-deep);
+        border-color: var(--primary-soft);
+    }
+    
+    .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .card-icon {
+        font-size: 2.8rem;
+        margin-right: 20px;
+        color: var(--primary-deep);
+        background: rgba(46, 107, 107, 0.1);
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 24px;
+        transition: all 0.3s ease;
+    }
+    
+    /* Ховер иконки - светлый зелёный */
+    .card:hover .card-icon {
+        background: var(--primary-soft);
+        color: white;
+        transform: scale(1.05);
+    }
+    
+    .card-title {
+        font-size: 1.4rem;
+        color: var(--text-dark);
+        font-weight: 600;
+        flex-grow: 1;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+    }
+    
+    .card.expandable .card-header::after {
+        content: '⋯';
+        color: var(--primary-soft);
+        font-size: 1.8rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-left: 15px;
+        line-height: 1;
+        opacity: 0.5;
     }
     </style>
 </head>
